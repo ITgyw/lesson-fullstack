@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">停下</button>
+    <!-- setInterval每隔多久就定时一下
+         启动一个定时器（setInterval），在点击停下按钮后，消除定时器 -->
+    <script>
+        const btn = document.querySelector('#btn');
+        let timeout = null;
+        btn.addEventListener('click', () => {
+            // console.log(this);
+            clearInterval(timeout);
+        });
+
+        // var 声明的，i->window
+        let i = 1;
+        // call
+        // 作用域链
+        // this -> window
+        console.log(window.i);
+
+        // setIterval 的返回值是 定时器对象 其值是定时器的id
+        timeout = setTimeout(() => {
+            // 箭头函数 简版的函数            
+            console.log(i++);
+            // NaN: Not  a Number
+            // console.log(this.i++)
+        }, 10000)
+    </script>
+</body>
+
+</html>

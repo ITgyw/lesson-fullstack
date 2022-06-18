@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <script>
+            const buycar = [
+                shopping1 = {
+                    name: '网红鞋',
+                    price: 49,
+                    count: 1
+                },
+                shopping2 = {
+                    name: '你不知道的JavaScript',
+                    price: 44,
+                    count: 1
+                },
+                shopping3 = {
+                    name: '一生的旅途',
+                    price: 34,
+                    count: 3
+                },
+
+            ]
+            function fn() {
+                let sum = 0;
+                for (let i = 0; i < buycar.length; i++) {
+                    sum += buycar[i].price * buycar[i].count;
+                }
+                console.log('总价' + sum);
+            }
+
+            fn();
+        </script>
+    </div>
+</body>
+
+</html>

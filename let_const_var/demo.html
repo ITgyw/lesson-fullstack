@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 举头三尺有神明
+
+        // const let 更好，  var会污染window
+        console.log(a); // 变量的定义提升 值并没有提升  提升到全局作用域的顶部去
+        // console.log(pizza); // let  const 不支持变脸的提升
+        // console.log('fn'); // 函数也会变量提升  ， 值都提升了
+        fn();
+        var a = 11;  // 建议不用var
+
+        const pizza = '牛肉';
+        function fn() {
+            console.log('fn');
+        }
+
+
+    </script>
+</body>
+
+</html>

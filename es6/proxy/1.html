@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script src="./2.js"></script> -->
+    <input type="text" id="searchInput">
+    <span id="searchSpan"></span>
+    <script>
+        // 怎么将输入框里的内容绑定到obj.value
+        // 双向绑定
+        const searchInput = document.getElementById('searchInput');
+        const searchSpan = document.getElementById('searchSpan');
+        const obj = { value: '' }; // 被代理对象的
+        // const proxyObj = new Proxy(obj, {
+        //     set: function (target, key, val) {
+        //         console.log('-------------------')
+        //         searchSpan.innerHTML = val;
+        //         target[key] = val;
+        //     }
+        // });
+
+        Object.defineProperty(obj, 'value', {
+            set: function (newVal) {
+                console.log('set val: ' + newVal);
+                searchInput.value = newVal;
+                searchSpan.innerHTML = newVal;
+            }
+        })
+
+
+        searchInput.addEventListener('keyup', function (e) {
+            // proxyObj.value = e.target.value
+            obj.value = e.target.value
+        })
+
+    </script>
+</body>
+
+</html>

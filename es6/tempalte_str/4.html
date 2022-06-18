@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #cats li {
+            background-color: pink;
+            height: 40px;
+            line-height: 40px;
+            padding: 10px;
+            color: white;
+            position: relative;
+            /*生成相对定位的元素,相对于其正常位置进行定位。*/
+        }
+
+        /* 添加的分割线？ */
+        #cats li:after {
+            content: '';
+            position: absolute;
+            /*生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。*/
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 1px;
+            /*有点粗怎么办？ 0.5px 小数不存在会向上取整*/
+            background-color: green;
+            /*变形属性，允许你将元素旋转，缩放，移动，倾斜等。*/
+            transform: scaleY(0.5);
+            /*Y轴缩小0.5倍*/
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="cats"></ul>
+    <script>
+        // 对象数组
+        const cats = [
+            {
+                name: 'Snkers',
+                age: 2
+            },
+            {
+                name: 'Hugo',
+                age: 1
+            },
+            {
+                name: 'Sunny',
+                age: 3
+            }
+        ];
+        const oUL = document.getElementById('cats');
+
+
+
+        //     oUL.innerHTML += `
+        //     <li>
+        //         ${cat.name} -- ${cat.age}
+        //     </li>
+        // `
+
+        //将cats.map获取的值装入oUL容器内
+        oUL.innerHTML = cats.map((cat) =>   //map 这个api参数是函数其返回值是新的数组 此处使用箭头函数 再用html形式显示
+            `
+                <li>
+                   名字： ${cat.name}--  年级：${cat.age}
+                </li>
+                `
+        ).join('')// join api 是跟在数组后的api  join方法将数组的每一项首位相连起来
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="userTable">
+        <tr>
+            <td>名字</td>
+            <td>家乡</td>
+            <td>工作城市</td>
+        </tr>
+        <!-- <tr>
+            <td>胡</td>
+            <td>江西</td>
+            <td>上海</td>
+        </tr> -->
+    </table>
+</body>
+<script>
+    // 如何把对象显示到页面
+    const person = {
+        name: '胡',
+        hometown: '江西',
+        city: '上海'
+    }
+    // DOM编程形成html标签
+    // js 通向html世界的编程 DOM
+    const tableElemet = document.querySelector('#userTable');
+    tableElemet.innerHTML +=
+        `
+    <tr>
+    <td>${person.name}</td>
+    <td>${person.hometown}</td>
+    <td>${person.city}</td>
+    </tr>
+   
+    `
+        ;
+</script>
+
+</html>

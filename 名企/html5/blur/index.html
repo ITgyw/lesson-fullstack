@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Updata CSS Skills With JS <span class="h1"></span></h2>
+    <div class="controls">
+        <div class="fields">
+            <!-- label标签 为 spacing绑定 -->
+            <label for="spacing">Spacing</label>
+            <!-- 输入控件  html5 更加强大的表单类型 -->
+            <!-- range 提供区间范围选择 -->
+            <input type="range" min="10" max="200" id="spacing" name="spacing" value="150" data-sizing="px">
+            <span id="spacing__res">150px</span>
+        </div>
+        <div class="fields">
+
+            <label for="blur">Blur</label>
+
+            <!-- range 提供区间范围选择 -->
+            <input type="range" min="0" max="25" id="blur" name="blur" value="10" data-sizing="px">
+            <span id="blur__res">15px</span>
+        </div>
+
+        <div class="fields">
+
+            <label for="color">Base Color</label>
+
+            <!-- range 提供区间范围选择 -->
+            <input type="color" id="color" name="color" value="#ffc600">
+            <span id="color__res">#ffc600</span>
+        </div>
+    </div>
+    <script>
+        const inputs = document.querySelectorAll('.fields input');
+        // console.log(inputs)
+        inputs.forEach(function (input) {
+            // console.log(input);
+            input.addEventListener('change', function (event) {
+                // console.log(this.value);
+                //this 指向当前inputs数组遍历的元素对象
+                // const sizing= this.dataset.sizing
+                const res = '#' + this.id + '__res';
+                // console.log(res);
+
+                document
+                    .querySelector(res)
+                    .innerText = this.value + (this.dataset.sizing ? this.dataset.sizing : '');
+            })
+        }
+        )
+
+        // const spacingInput = document.querySelector('#spacing');
+        // // console.log(spacingInput)
+
+        // // addEventListener 该API是添加一个事件监听
+        // spacingInput.addEventListener('change', function (event) {
+        //     // js 是事件驱动的语言
+        //     // 函数有一个指针
+        //     // this 在js中最重要的基础，
+        //     // 事件处理函数中this会指向事件发生的对象
+
+        //     // console.log(event.target==this)
+        //     console.log(this.value);
+        //     // const sizing= this.dataset.sizing
+        //     document.querySelector('#spacing__res').innerText =
+        //         this.value + this.dataset.sizing;
+        // })
+
+        // const blurInput = document.querySelector('#blur');
+        // blurInput.addEventListener('change', function (event) {
+        //     console.log(this.value);
+        //     // const sizing= this.dataset.sizing
+        //     document.querySelector('#blur__res').innerText =
+        //         this.value + this.dataset.sizing;
+        // })
+
+    </script>
+</body>
+
+</html>

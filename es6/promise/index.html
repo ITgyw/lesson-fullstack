@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. fetch 是异步 比xhr简单
+        // 2. fetch() 返回值是 Promise的一个实例
+        // 资源定位
+        let url = 'https://api.github.com/users/shunwuyu'
+        fetch(url) // 去出趟远门拿到promise   异步 同步
+            .then(data => data.json())// .then()方法是原型链上的方法
+            .then(data => {
+                console.log(data);
+            })
+        // Promise 具有异步代码同步化的能力
+
+        const p = new Promise((resolve) => {
+            setTimeout(function () {
+                console.log('-----------');
+                resolve()
+            }, 1000);
+        })
+
+        p.then(() => {
+            console.log(11111)
+        })
+    </script>
+</body>
+
+</html>

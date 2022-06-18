@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./common.css">
+</head>
+
+<body>
+
+    <div class="keys">
+        <div class="key">
+            <div>A</div>
+            <span class="sound">clap</span>
+        </div>
+        <div class="key">
+            <div>S</div>
+            <span class="sound">hihat</span>
+        </div>
+        <div class="key">
+            <div>D</div>
+            <span class="sound">kick</span>
+        </div>
+        <div class="key">
+            <div></div>
+            <span class="sound"></span>
+        </div>
+        <div class="key">
+            <div></div>
+            <span class="sound"></span>
+        </div>
+        <div class="key">
+            <div></div>
+            <span class="sound"></span>
+        </div>
+        <div class="key">
+            <div></div>
+            <span class="sound"></span>
+        </div>
+        <div class="key">
+            <div></div>
+            <span class="sound"></span>
+        </div>
+        <div class="key">
+            <div></div>
+            <span class="sound"></span>
+        </div>
+    </div>
+    <!-- 播放声音标签  -->
+    <!-- video -->
+    <audio src="boom.wav"></audio>
+    <audio src="clap.wav"></audio>
+    <audio src="hihat.wav"></audio>
+    <audio src="openhat.wav"></audio>
+    <audio src="ride.wav"></audio>
+    <audio src="snare.wav"></audio>
+    <audio src="tink.wav"></audio>
+    <audio src="tom.wav"></audio>
+    <audio src="kick.wav"></audio>
+    <audio src="boom.wav" controls></audio>
+    <!-- 按A键的时候播放clap
+    1. js 捕获按键事件
+       js是一个事件驱动语言
+    
+    2. 播放clap -->
+
+    <script>
+        function playSound(event) {
+            console.log(event);
+            if (event.key == 'a') {
+                console.log('a');
+                // return  
+            }
+
+        }
+        window.addEventListener('keydown', playSound);// 处理keydown事件的回调函数playSound
+    </script>
+</body>
+
+</html>

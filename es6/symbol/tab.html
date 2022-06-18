@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /*input a button img  浏览器轮廓轮廓不统一*/
+            outline: 0;
+        }
+
+        body {
+            color: #111;
+        }
+
+        a {
+            text-decoration: none;
+            /* 颜色继承 */
+            color: inherit;
+        }
+
+        .h_tabbar {
+            display: flex;
+        }
+
+        .h_tabbar__item {
+            flex: 1;
+            height: 50px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .h_tabbar__item a {
+            display: block;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .h_tabbar__item a:first-child {
+            border-right: 1px solid #ddd;
+        }
+
+        .h_tabbar__item_on {
+            background-color: pink;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="h_tabbar">
+        <div class="h_tabbar__item h_tabbar__item_on ">
+            <a href="#" data-type="basic">
+                basic
+            </a>
+        </div>
+        <div class="h_tabbar__item">
+            <a href="#" data-type="super">
+                super
+            </a>
+        </div>
+    </div>
+    <div id="list">
+
+    </div>
+    <script>
+        const list = document.getElementById('list');
+        const links = document.querySelectorAll('.h_tabbar__item a');
+        // const tabTpes = {
+        //     basic: Symbol(),/*es6里新的简单数据类型，独一无二*/
+        //     super: Symbol()
+        // }
+        const tabTpes = {
+            basic: 'basic',/*es6里新的简单数据类型，独一无二*/
+            super: 'super'
+        }
+
+
+
+        links.forEach(link => {
+            link.addEventListener('click', function (event) {
+                // a带来交互感 但不需要他跳转页面
+                event.preventDefault();
+                const type = event.target.dataset.type;
+                const parent = this.parentNode;
+                // console.log(parent);
+                // .classList.contain 查询元素类名
+                if (!parent.classList.contains('h_tabbar__item_on')) {
+                    // 实时获取当前拥有h_tabbar__item_on类名的元素
+                    document.querySelector('h_tabbar__item_on').classList.remove('h_tabbar__item_on')
+                    // .classList.remove() 移除元素类名
+
+                    // .classList.add 添加元素类名
+                    parent.classList.add('h_tabbar__item_on')
+                }
+
+                if (type == 'tabTpes.basic') {
+                    list.innerText = 'basic'
+                }
+                if (type == 'tabTpes.super') {
+                    list.innerText = 'super'
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
