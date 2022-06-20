@@ -49,5 +49,32 @@
     4. 组件挂载后，useEffect
         实例化幻灯片功能 new Swiper('.btn_banners')
 
+- 仿站原则与做法
+    1. 想去哪家公司就仿哪家
+    2. 首页面 一模一样
+        但又不用完全实现功能
+    3. 不重要的功能切页面 
+    4. 不要让动态部分撑页面的感觉，
+        给固定高度 rem
+    5. styled-component 生成的类名为何乱
+
+- css in js 类名逻辑
+    1. 多人协作时，类名有概论会发生冲突
+    2. 页面级别组件， npm 第三方组件 一般组件 通用组件 样式组件....  组件太多
+    3. styled-components 生成hash 类名
+        样式又上去了， 但绝对不重复
+        最外层就好， 内层会自动嵌套
+    4. 在jsx里直接写className = "demo" 没有这个能力的
+        styled-components 等 css in js  时， 就可以
+
+- 开发套路及最终方案
+    1. 接口都放在api目录下
+    2. 接口请求在路由级别组件发送， 子组件不要去做
+    3. 子组件只负责jsx提供和style-components css in js
+        很完美
+    4. font-awesome 图标很多
+    
+
+
     
 
