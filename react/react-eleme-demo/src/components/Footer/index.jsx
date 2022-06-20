@@ -2,10 +2,13 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FooterWrapper } from './style'
 import classnames from 'classnames'
+import { isPathPartlyExisted } from '../../utils'
 
 export default function Footer(props) {
     const { pathname } = useLocation()
-    if (['/cities'].indexOf(pathname) != -1) return
+    // if (['/cities', '/homedetail'].indexOf(pathname) != -1) return
+    // 公共函数 在一个数组里匹配每一项部分匹配pathname就可以
+    isPathPartlyExisted(pathname)
     return (
         <FooterWrapper>
             <Link to="/home" className={classnames({ active: pathname == '/home' || pathname == '/' })}>
