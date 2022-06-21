@@ -105,6 +105,21 @@
     请写注释
     上班前期多写注释 sp
 
+- 最佳项目模板，添加了一个routes文件夹
+    SPA 专属的 1.数据流管理restart
+    1. 专门处理路由， 方便管理  如/api文件夹
+        routes/index.jsx 路由地图
+    2. 组件化思维， 封装成组件就可以抽离，
+        以一个组件引入
+    3. 首页干净了  layout 没有污染他
+
+- antd-mobil 升级
+    1. npm rmove antd-mobile 移除
+    2. npm install antd-mobile@latest
+    3. 
+
+
+
 
 
 
