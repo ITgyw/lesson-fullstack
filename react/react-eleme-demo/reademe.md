@@ -48,6 +48,12 @@
         .swiper-pagination 分页
     4. 组件挂载后，useEffect
         实例化幻灯片功能 new Swiper('.btn_banners')
+    5. 遇到的问题
+        pagination 分页不好使
+        Swiper 被实例化多次（同一幻灯片）0
+        useEffect, 第二个参数 [] 只会执行一次
+        全局变量swiper  实例化前判断一下 如果已经实例化就退出，
+
 
 - 仿站原则与做法
     1. 想去哪家公司就仿哪家
@@ -118,7 +124,15 @@
     2. npm install antd-mobile@latest
     3. 
 
-
+- 当组件深度比较大的时候，
+    相对路径变得难 ../../
+    工程化， vite 支持的过程
+    在vite.config.js中配置alias 路径别名
+    resolve: {
+        alias: {
+            "@": path.resolve(__dirname,'src/')
+        }
+    }
 
 
 

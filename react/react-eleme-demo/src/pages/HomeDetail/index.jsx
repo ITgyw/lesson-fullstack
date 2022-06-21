@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { Wrapper } from './style'
 import { NavBar } from 'antd-mobile'
 import { useNavigate, Outlet, useParams } from 'react-router-dom'
+// 快捷方式 @代表 /src  工程化 alias 链接别名
+import HomeDetailNav from '@/components/HomeDetailNav'
 
 export default function HomeDetail() {
   const navigate = useNavigate()
@@ -48,7 +50,7 @@ export default function HomeDetail() {
           </div>
           <p>公告：本店香锅不单炒，套餐必点！单加菜品需与套餐同时点</p>
         </div>
-        {/* <HomeDetailNav /> */}
+        <HomeDetailNav />
         <Outlet />
       </div>
     </Wrapper>
