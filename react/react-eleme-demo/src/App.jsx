@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -9,7 +9,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <RoutesConfig />
+      <Suspense fallback={<div>loading...</div>}>
+        <RoutesConfig />
+      </Suspense>
       <Footer />
     </div>
   )

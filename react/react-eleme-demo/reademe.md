@@ -7,6 +7,13 @@
     App 组件
     1. 页面级别组件共享布局方案
         header + 动态路由组件(Routes+Route path) + footer 
+    2. 二级路由layout 升级 用<Outlet/>
+        - 在路由配置中， 一级路由，children
+            可以设置多个二级路由，
+        - Context 上下文环境
+            Route.context
+            path -> 二级路由组件  Order
+            
 
 - header  组件的版本化及配置
     1. 页面中layout 固定部分， 不属于页面组件的内部， 属于layout 
@@ -86,6 +93,12 @@
     2. 只需要首页一个组件就好
         如果可以少加载一点， 首页打开肯定更快
     3. 但是router配置 配置所有的路由
+        React.lazy 延迟按需(切到路由)加载 import（path）
+        const Home = lazy（（）=> import（'./pages/Home'））
+    4. 非首页 其他页面级别路由应该采用按需加载
+    5. 延迟加载的组件，要为其他提供Suspense
+        react 提供的一个组件，再好没有加载js组件前，可以想用fallback 先试一下
+        Suspense + lazy
 
 - antd-mobile
     antd 的移动版 手机栈
@@ -134,7 +147,9 @@
         }
     }
 
-
+- NavLink 比 Link更专业
+    如果要给active  激活路由的时候，自带光环
+    二级路由里面，useEffect + navigate 自己跳一次
 
 
     

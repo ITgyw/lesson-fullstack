@@ -14,7 +14,8 @@ export default function HomeDetail() {
   }
 
   useEffect(() => {
-    console.log('----------')
+    // console.log('----------')
+    navigate(`/homedetail/${id}/order`)
   }, [])
 
   return (
@@ -34,15 +35,15 @@ export default function HomeDetail() {
               <i className='fa fa-arrow-right'></i>
             </h2>
             <div className="detail-box">
-              <span></span>
-              <span></span>
-              <span></span>
+              <span>评价4.3</span>
+              <span>月售</span>
+              <span>商家配送</span>
             </div>
           </div>
           <div className="sum-detail">
             <div className="img-detail">
-              <span className="sale-detail"></span>
-              <span className="num-detail"></span>
+              <span className="sale-detail">“满减”</span>
+              <span className="num-detail">满十四减一</span>
             </div>
             <div className="sale">
               3个优惠
@@ -50,7 +51,7 @@ export default function HomeDetail() {
           </div>
           <p>公告：本店香锅不单炒，套餐必点！单加菜品需与套餐同时点</p>
         </div>
-        <HomeDetailNav />
+        <HomeDetailNav id={id} />
         <Outlet />
       </div>
     </Wrapper>
