@@ -13,7 +13,6 @@
         - Context 上下文环境
             Route.context
             path -> 二级路由组件  Order
-            
 
 - header  组件的版本化及配置
     1. 页面中layout 固定部分， 不属于页面组件的内部， 属于layout 
@@ -150,6 +149,12 @@
 - NavLink 比 Link更专业
     如果要给active  激活路由的时候，自带光环
     二级路由里面，useEffect + navigate 自己跳一次
+
+- 代码中要展示抽象，封装和设计的能力
+    1. routerConfig 
+    2. 复杂jsx的展示封装，函数化插入，有利于代码的可读性
+        写代码的人和读代码的人不是同一个人
+        函数本身具有描述性
 
 
     
