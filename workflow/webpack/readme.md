@@ -58,4 +58,21 @@
         webpack有插件机制 
         html-webpack-plugin  把指定的index.html, 搬到dist目录下
         把打包结果bundle.js文件 自动的在html 里引入
-        
+
+    10. [name].[hash:8].js 称之为 hash文件名
+        - [] name原文件名 hash 唯一文件内容，只要改变了内容就会生成新的hash，
+        否则绝对不变
+        - 浏览器本地缓存    
+        - 如果更新了，main.js ？
+            hash值 根据内容计算得到的
+        - 使用hash值创建版本号
+
+    11. js 和 css 分离
+
+    12. webpack 全家桶
+         webpack 5.73.0
+         webpack-cli 4.10.0 命令行
+         npx webpack  npx -> node_modules/webpack-cli -> webpack 
+         webpack-dev-server 启动 http server
+
+         
