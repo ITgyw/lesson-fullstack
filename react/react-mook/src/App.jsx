@@ -1,0 +1,20 @@
+import { useState, lazy, Suspense } from 'react'
+import './App.css'
+// import Header from './components/Header'
+// import Footer from './components/Footer'
+import RoutesConfig from './routes'
+
+function App() {
+
+  return (
+    <div className="App">
+
+      <Suspense fallback={<div>loading...</div>}>
+        <RoutesConfig />
+      </Suspense>
+
+    </div>
+  )
+}
+
+export default App
