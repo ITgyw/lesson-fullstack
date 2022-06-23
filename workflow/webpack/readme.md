@@ -1,0 +1,61 @@
+- npm init @vitejs/app
+    react 脚手架
+    基于vitejs/app 工程化
+    npm 命令 node默认命令
+
+- webpack
+    另一个vite
+    1. template
+        src是开发目录
+        main.js 单点入口文件
+            import 项目组织起来
+    2. package.json
+    3. npm run dev
+        3000端口上 http服务
+
+- webpack 工程化流程
+    1. npm init -y
+    初始化项目为node 项目
+    工程化是node 的产物，使前端就更专业了
+    2. src/开发目录
+        main.js/ index.js 入口文件
+    3. npm i webpack  webpack-cli -D
+        -D 开发依赖   工程化是开发阶段的
+    4. 把项目运行起来
+        npx webpack
+        src/index.js -> dist/index.js 打包的过程
+        npx 后期推出的新功能
+        1. 命令行 调用package 里的包
+        2. 默认production --mode=development 来设置当前模式
+
+    5. webpack 运行后有什么效果
+        - 打包工具 pack bundler， src->dist
+            import 'a.jpg'  import 'index.css'
+        - 应用场景
+            development开发，调试便捷为主
+            production 上线 代码体积，性能
+    
+    6. webpack 默认会去找根目录下的webpack.config.js运行
+        ```js
+            module.exports = {
+                mode: 'production',    //工作模式
+                entry: './src/index.js', // 入口文件：被打包的目的文件
+                output: {                // 出口文件
+                filename: 'bundle.js',   
+                 path: path.join(__dirname, 'dist') // 
+                }
+            }
+        ```
+    7. 何为打包的概念
+        从入口进入，根据依赖关系，都打包成一个文件 bundle.js 
+
+    8. webpack 默认只处理js类型的文件， 甚至如果你要es6 -> es5, 也要loader 
+        css 文件， 需要手动添加loader（webpack可以打包一切静态资源，选配）
+        loader， 加载特定类型文件处理的工具
+        css -> css-loader
+
+    9. plugins
+        webpack有插件机制 
+        html-webpack-plugin  把指定的index.html, 搬到dist目录下
+        把打包结果bundle.js文件 自动的在html 里引入
+        
