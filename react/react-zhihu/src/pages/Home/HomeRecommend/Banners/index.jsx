@@ -66,14 +66,14 @@ export default function Banners({ banners }) {
     return (
         <BannersWrapper>
             <div className="btn-banners swiper-container">
-                <div className="swiper-wrapper">
-                    <div className="swiper-slide">
-                        {renderBtnBannersPage1()}
-                    </div>
-                    <div className="swiper-slide">
-                        {renderBtnBannersPage2()}
-                    </div>
+                {/* <div className="swiper-wrapper"> */}
+                <div className="swiper-slide">
+                    {renderBtnBannersPage1()}
                 </div>
+                <div className="swiper-slide">
+                    {renderBtnBannersPage2()}
+                </div>
+                {/* </div> */}
                 <div className="swiper-pagination"></div>
             </div>
         </BannersWrapper>

@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import Banners from './Banners'
-import { getBanners } from '@/api/request'
+import SmallBanners from './SmallBanners'
+import { getBanners, getSmallBanners } from '@/api/request'
+import { Wrapper } from './style'
 
 
 // const backgroungImg = "@/assets/imgs/1.png"
 export default function HomeRecommend() {
     const [banners, setBanners] = useState([])
+    const [smallbanners, setSmallbanners] = useState([])
     useEffect(() => {
         (async () => {
             let { data: bannerData } = await getBanners()
+            let { data: smallbannerData } = await getSmallBanners()
             setBanners(bannerData)
+            setSmallbanners(smallbannerData)
         })()
     }, [])
     return (
-        <div>
+        <Wrapper>
             HomeRecommend
-            {/* <img src="https://fuss10.elemecdn.com/0/d0/dd7c960f08cdc756b1d3ad54978fdjpeg.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/" alt="1" /> */}
+            <div className='box-img'>
+                <img src="https://bossaudioandcomic-1252317822.image.myqcloud.com/activity/document/c2c3a06bb1466517b25853a458a799ff.jpg" alt="1" />
+            </div>
             <Banners banners={banners} />
-        </div>
+            <SmallBanners smallbanners={smallbanners} />
+        </Wrapper>
     )
 }
