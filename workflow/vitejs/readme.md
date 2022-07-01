@@ -33,7 +33,13 @@
             module script  -> mian.jsx  -> 按需加载 react
             react-dom  index.css... -> 编译器babael(实时)
         - 浏览到新的页面时，再通过import 编译执行
-        
+
+- 在vite项目中， 一个import 语句即代表一个HTTP请求
+    Vite Dev Server 会读取本地文件 返回浏览器可以解析的代码
+    vute 提倡的no bundle
+    利用浏览器原生es模块的支持，实现开发阶段的devServer，
+    进行模块的按需加载，而不是先整体打包再进行加载（webpack），
+    
 
 
 
