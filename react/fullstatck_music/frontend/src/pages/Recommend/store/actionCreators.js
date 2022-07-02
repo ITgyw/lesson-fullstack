@@ -1,7 +1,10 @@
 // api请求 一定放在action中
 import * as actionTypes from './constans'
 
-import { getBannerRequest } from "@/api/request"
+import {
+    getBannerRequest,
+    getRecommendListRequest
+} from "@/api/request"
 // import { changeBannerList } from "/actionCreators"
 
 export const changeBannerList = (data) => ({
@@ -14,6 +17,20 @@ export const getBannerList = () => {
             .then(data => {
                 const action = changeBannerList(data.banners);
                 dispatch(action)
+            })
+    }
+}
+
+export const changeRecommendList = (data) => ({
+    type: actionTypes.CHANGE_RECOMMEND_LIST,
+    data
+})
+
+export const getRecommendList = () => {
+    return (dispatch) => {
+        getRecommendListRequest()
+            .then(data => {
+                dispatch(changeRecommendList(data.result))
             })
     }
 }

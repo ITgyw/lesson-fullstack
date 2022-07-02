@@ -12,6 +12,11 @@ export default (state = defaultState, action) => {
                 ...state,
                 bannerList: action.data
             }
+        case actionTypes.CHANGE_RECOMMEND_LIST:
+            return {
+                ...state,
+                recommendList: action.data
+            }
         default:
 
             return state
