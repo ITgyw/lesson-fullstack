@@ -27,13 +27,13 @@ const LoadingWrapper = styled.div`
     }
 `
 
-function Loading() {
-    return (
-        <LoadingWrapper>
-            <div></div>
-            <div></div>
-        </LoadingWrapper>
-    );
+function Loading()  {
+  return (
+    <LoadingWrapper>
+      <div></div>
+      <div></div>
+    </LoadingWrapper>
+  );
 }
-
+ 
 export default React.memo(Loading);

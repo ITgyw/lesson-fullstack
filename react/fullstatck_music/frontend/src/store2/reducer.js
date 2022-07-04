@@ -7,6 +7,7 @@ import rankReducer from './rank'
 // 固定的返回值 页面需要的状态
 // 页面不在管理数据 
 import singerReducer from './singer';
+import singersReducer from './singers'
 import recommendReducer from './recommend';
 // combineReducers接受对象配置 
 export default combineReducers({
@@ -14,5 +15,6 @@ export default combineReducers({
     user: userReducer,
     singer: singerReducer,
     recommend: recommendReducer,
-    rank: rankReducer
+    rank:rankReducer,
+    singers:singersReducer
 });

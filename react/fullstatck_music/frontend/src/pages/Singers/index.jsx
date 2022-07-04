@@ -1,32 +1,33 @@
-// import React, { useEffect } from 'react'
-// import { connect } from 'react-redux'
-// // import { getSingerList } from '@/store/actionCreators'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { getSingersList } from "@/store/actionCreators"
+function Singers(props) {
+  const { singersList, getSingersListDispatch } = props
+  useEffect(() => {
 
-// function Singers(props) {
-//   const { singerList, getSingerListDispatch } = props
-//   useEffect(() => {
-//     getSingerListDispatch()
-//   }, [])
-//   console.log(singerList, '////')
-//   return (
-//     <div>
-//       Singer
-//     </div>
-//   )
-// }
+    getSingersListDispatch()
 
-// const mapStateToProps = (state) => {
-//   return {
-//     singer: state.singer.singerList
-//   }
-// }
+  }, [])
+  console.log("singers:", singersList, '/////');
+  return (
+    <div>
+      Singers
+    </div>
+  )
+}
+const mapStateToProps = (state) => {
+  return {
+    singersList: state.singer.singers.singersList
+  }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     getSingerListDispatch() {
-//       dispatch(getSingerList())
-//     }
-//   }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Singers)    
+}
+//状态改变的流程
+//数据状态变得万无一失
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getSingersListDispatch() {
+      dispatch(getSingersList())
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Singers)

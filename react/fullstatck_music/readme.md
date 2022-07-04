@@ -128,6 +128,23 @@
     4. 给相对独立， 组件加memo，只要外界给他的props没有变，则不会重新编译
     5. 热更新  页面局部
 
+- memo 组件性能优化
+    1. 子组件
+    2. 父组件数据复杂，多项改变状态的地方
+    3. 父组件的改变没有影响到子组件（props未变，没有props）
+    4. 组件外面都加一个memo
+
+- styled-components 原则
+    1. 最外层容器 styled-components 接管
+        Wrapper Container
+    2. List + ListItem  样式的复用
+    
+- 图片延迟加载
+    1. react-lazyload  声明式组件 LazyLoad + placeholder
+        包住 原来的图片 
+    2. Scroll  onScroll react-lazyload 去 forceCheck
+        
+
  npm i prop-types
 
  npm i better-scroll@2.0.0-beta.4

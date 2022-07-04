@@ -1,9 +1,9 @@
 // 初始化仓库
 // compose 
-// applyMiddleware 
 import { createStore, compose, applyMiddleware } from "redux";
+import trunk from 'redux-thunk';
 import reducer from './reducer';
-import thunk from 'redux-thunk'
+
 // 激活redux devtool 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // store 物流仓库  数据状态仓库
@@ -14,6 +14,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // reducer? Array.reduce 名词 
 // 第二个参数
 const store = createStore(reducer, composeEnhancers(
-    applyMiddleware(thunk)
+    applyMiddleware(trunk)
 ));
 export default store 

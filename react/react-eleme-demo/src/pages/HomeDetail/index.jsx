@@ -21,7 +21,7 @@ export default function HomeDetail() {
   return (
     <Wrapper>
       {/* 路由出栈 */}
-      <div className="detail-top">
+      <div className="detail-t  op">
         <NavBar
           back='返回'
           onBack={() => navigate(-1)}

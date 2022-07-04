@@ -4,33 +4,34 @@ import style from "@/assets/global-style";
 export const SliderContainer = styled.div`
     position: relative;
     box-sizing: border-box;
-    width: 100%;
-    height: 100%;
+    width:100%;
+    height:auto;
     margin: auto;
-    background: white;
-    .before {
+    background:white;
+    .before{
         position: absolute;
-        top: -300px;
-        height: 400px;
-        width: 100%;
+        top:-300px;
+        height:400px;
+        width:100%;
         background: ${style['theme-color']};
-        z-index: 1;
+        z-index:1;
     }
-    .slider-container {
+    .slider-container{
         position: relative;
-        width:98%;
+        width: 98%;
         height: 8rem;
-        overflow:hidden;
-        margin: auto;
+        overflow: hidden;
+        margin:auto;
         border-radius: 0.3rem;
-        .sider-nav {
-            position:absolute;
+        .slider-nav{
+            position: absolute;
             display:block;
-            width:100%;
-            height:100%;
+            width: 100%;
+            height: 100%;
         }
-        .swiper-pagination-bullet-active {
-            background:${style['theme-color']}
+        .swiper-pagination-bullet-active{
+            background: ${style['theme-color']};
+            
         }
     }
 `

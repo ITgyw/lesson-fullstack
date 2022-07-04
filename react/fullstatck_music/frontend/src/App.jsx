@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
+import logo from './logo.svg'
 import './App.css'
+import { connect } from 'react-redux'
 import { Top, Tab, TabItem } from './style'
 import { useNavigate, NavLink } from 'react-router-dom'
 import RouterConfig from './routes'
@@ -49,6 +51,7 @@ function App(props) {
     </div>
   )
 }
+export default App
 // state 是redux 负责的所有子仓数据\c\
 // connect 是api 
 // 组件数据管理功能被收回 
@@ -58,4 +61,12 @@ function App(props) {
 // 把store中的状态以props的形式引到组件中
 // state 由redux 给我们的， 状态树
 // 以树来组织数据分仓 树根 
-export default App
+// const mapStateToProps = (state) => {
+//   return {
+//     // 首页想要展示singer数据
+//     singers: state.singer.singers,
+//     users: state.user.users
+//   }
+// }
+
+// export default connect(mapStateToProps)(App)

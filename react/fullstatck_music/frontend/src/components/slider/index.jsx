@@ -1,7 +1,6 @@
 import React, { useEffect, useState, memo } from 'react'
 import { SliderContainer } from './style'
 import Swiper from 'swiper'
-
 function Slider({ bannerList }) {
     const [sliderSwiper, setSliderSwiper] = useState(null)
     useEffect(() => {
@@ -10,13 +9,14 @@ function Slider({ bannerList }) {
                 loop: true,
                 autoplay: {
                     delay: 3000,
-                    disableOninteraction: false
+                    disableOnInteraction: false
                 },
-                paginatio: { el: '.swiper-pagination' }
+                pagination: { el: '.swiper-pagination' }
             })
             setSliderSwiper(sliderSwiper)
         }
     }, [bannerList.length, sliderSwiper])
+    console.log(bannerList, '///////')
     return (
         <SliderContainer>
             <div className="before"></div>
@@ -45,4 +45,4 @@ function Slider({ bannerList }) {
     )
 }
 
-export default memo(Slider)
+export default memo(Slider)//memo(memory)
