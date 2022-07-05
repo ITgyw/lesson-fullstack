@@ -148,3 +148,8 @@
  npm i prop-types
 
  npm i better-scroll@2.0.0-beta.4
+
+
+
+ cmd: npm i -g creat-react-app
+ 

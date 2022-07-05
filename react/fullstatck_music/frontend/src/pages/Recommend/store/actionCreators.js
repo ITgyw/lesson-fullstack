@@ -1,5 +1,6 @@
 import { getBannerRequest, getRecommendListRequest } from "@/api/request"
 import * as actionTypes from './constants'
+
 export const changeBannerList = (data) => ({
     type: actionTypes.CHANGE_BANNER,
     data: data
