@@ -1,16 +1,53 @@
 import React, {
     useState,
-    useRef, useEffect, useCallback
-} from 'react'
+    useEffect, useRef, useCallback
+} from 'react';
+import { useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux';
-
-// useRef  DOM 相关的
-// useCallback 性能优化
+//  useRef  DOM 相关
+//  useCallback 性能优化 
+import { getHotKeywords } from './store/actionCreators'
+import { CSSTransition } from 'react-transition-group'
+import {
+    Container
+} from './style'
 
 const Search = (props) => {
-    // query 搜索内容 reduc是解决共享状态问题的
-    // 1. 搜索列表 api  action  redux
+    const navigate = useNavigate()
+    const { hotList, songsCount } = props
+    const { getHotKeywordsDispatch } = props
+    // 搜索内容 redux 解决共享状态问题 
+    // 1. 搜索列表 api  action  redux 
     const [query, setQuery] = useState('')
+    const [show, setShow] = useState(false)
+    useEffect(() => {
+        setShow(true)
+        if (!hotList.length) {
+            getHotKeywordsDispatch()
+        }
+        setTimeout(() => {
+            setShow(false)
+        }, 3000)
+    }, [])
+    return (
+        // 当dom ready 组件挂载上去后，应用css transition效果
+        <CSSTransition
+            in={show}
+            timeout={300}
+            appear={true}
+            classNames="fly"
+            unmountOnExit
+            onExit={() => {
+                navigate(-1)
+            }}
+        >
+            <Container play={songsCount}>
+                <div className="serach_box_wrapper">
+
+                </div>
+            </Container>
+        </CSSTransition>
+    )
 }
 const mapStateToProps = (state) => {
     return {
@@ -19,27 +56,23 @@ const mapStateToProps = (state) => {
         enterLoading: state.search.enterLoading,
         // 搜索建议 卖广告
         suggestList: state.search.suggestList,
-        // redux就为跨模块数据共享而来，把数据共享好
+        // 就为跨模块共享数据而来， 共享好 
         songsCount: state.player.playList.length,
         songsList: state.search.songsList
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        // getHotKeyWordsDispatch() {
-        //     dispatch(getHotKeyWords());
-        // },
-        // changeEnterLoadingDispatch() {
+        getHotKeywordsDispatch() {
+            dispatch(getHotKeywords());
+        },
+        // changeEnterLoadingDispatch(data) {
         //     dispatch(changeEnterLoading(data))
         // },
         // getSuggestListDispatch(data) {
         //     dispatch(getSuggestList(data))
-        // },
-        // getSongsLiatDispatch() {
-        //     dispatch()
         // }
-
     }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default connect(mapStateToProps,
+    mapDispatchToProps)(Search)

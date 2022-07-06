@@ -143,7 +143,54 @@
     1. react-lazyload  声明式组件 LazyLoad + placeholder
         包住 原来的图片 
     2. Scroll  onScroll react-lazyload 去 forceCheck
-        
+
+
+## 复杂组件业务分析
+    1. 这个阶段要刻意练习复杂组件 
+        搜索
+        登录
+    2. redux 的设计思路
+        api 请求的肯定redux了
+        跨模块共享状态没问题
+    3. 热词 
+        建议
+
+- 三元react 风格
+    1. 命名风格
+        api请求 getXXXRequest
+        页面级别组件中 getXXXXDispatch
+        action 异步 getXXX
+        action 同步 changeXXX
+        actionTypes SET_XXX_XXX
+    2. react 处理流程风格
+        - 分析页面，看透业务，网络请求 和 状态 XHR
+        - mapStateToProps 需要哪些状态
+        - store 模块 defaultState
+        - reducer case 修改
+        - constants 写完了
+        - actionCreators 
+        - api 填写
+- CSSTransition 页面交互组件
+    1. 给页面的路由切换带来动画效果
+    2. 来自react-transition-group
+    3. in + 私有的useState(show)
+        初始时show为false 内存 异步的
+        useEffect mounted(挂载上去了) 浏览器上  shoe true
+    4. classNames fly 
+    5. fly-enter 先立马上
+        opactiy: 0;;
+        translate: transform(100%,0,0);
+        一小会儿 因为transition需要 transition: all 0.3s;
+        opcity: 1;
+        translate: transfrom(0%,0,0)
+    6. fly-exit
+        fly-exit-active
+    7. transform-origin基点在右下角
+    8. GPU加速用  transform:translate3d
+    
+
+
+
 
  npm i prop-types
 
