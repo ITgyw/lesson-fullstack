@@ -6,17 +6,26 @@ import { useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux';
 //  useRef  DOM 相关
 //  useCallback 性能优化 
-import { getHotKeywords } from './store/actionCreators'
+import {
+    changeEnterLoading,
+    getHotKeywords
+} from './store/actionCreators'
 import { CSSTransition } from 'react-transition-group'
 import {
     Container
 } from './style'
 import SearchBox from '@/components/common/search-box'
+import Loading from '@/components/common/loading'
+import { EnterLoading } from './../Singers/style'
 
 const Search = (props) => {
     const navigate = useNavigate()
-    const { hotList, songsCount } = props
-    const { getHotKeywordsDispatch } = props
+    const { hotList, songsCount, enterLoading } = props
+    const {
+        getHotKeywordsDispatch,
+        changeEnterLoadingDispatch
+    } = props
+
     // 搜索内容 redux 解决共享状态问题 
     // 1. 搜索列表 api  action  redux 
     const [query, setQuery] = useState('')
@@ -32,9 +41,19 @@ const Search = (props) => {
         }
     }, [])
 
-    const handleQuery = () => {
-
+    const handleQuery = (q) => {
+        // console.log(q);
+        setQuery(q)
     }
+
+    useEffect(() => {
+        // console.log(query, '----------------');
+        if (query.trim()) {
+            //  有必要去请求
+            changeEnterLoadingDispatch(true);
+        }
+    }, [query])
+
     return (
         // 当dom ready 组件挂载上去后，应用css transition效果
         <CSSTransition
@@ -60,6 +79,7 @@ const Search = (props) => {
                         </SearchBox>
                     </div>
                 </div>
+                {enterLoading && <EnterLoading><Loading></Loading></EnterLoading>}
             </Container>
         </CSSTransition>
     )
@@ -81,9 +101,9 @@ const mapDispatchToProps = (dispatch) => {
         getHotKeywordsDispatch() {
             dispatch(getHotKeywords());
         },
-        // changeEnterLoadingDispatch(data) {
-        //     dispatch(changeEnterLoading(data))
-        // },
+        changeEnterLoadingDispatch(data) {
+            dispatch(changeEnterLoading(data))
+        },
         // getSuggestListDispatch(data) {
         //     dispatch(getSuggestList(data))
         // }
