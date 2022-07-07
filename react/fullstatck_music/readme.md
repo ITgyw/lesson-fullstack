@@ -187,7 +187,7 @@
         fly-exit-active
     7. transform-origin基点在右下角
     8. GPU加速用  transform:translate3d
-    
+    9. 页面后退按钮只需要setShow(false),CSSTransition 组件的onExit接管
 
 
 

@@ -11,6 +11,7 @@ import { CSSTransition } from 'react-transition-group'
 import {
     Container
 } from './style'
+import SearchBox from '@/components/common/search-box'
 
 const Search = (props) => {
     const navigate = useNavigate()
@@ -20,15 +21,20 @@ const Search = (props) => {
     // 1. 搜索列表 api  action  redux 
     const [query, setQuery] = useState('')
     const [show, setShow] = useState(false)
+
+    const searchBack = useCallback(() => {
+        setShow(false);
+    }, [])
     useEffect(() => {
         setShow(true)
         if (!hotList.length) {
             getHotKeywordsDispatch()
         }
-        setTimeout(() => {
-            setShow(false)
-        }, 3000)
     }, [])
+
+    const handleQuery = () => {
+
+    }
     return (
         // 当dom ready 组件挂载上去后，应用css transition效果
         <CSSTransition
@@ -43,7 +49,16 @@ const Search = (props) => {
         >
             <Container play={songsCount}>
                 <div className="serach_box_wrapper">
+                    <div className="search_box_wrapper">
+                        <SearchBox
+                            back={searchBack}
+                            // 双向绑定  交给父组件
+                            newQuery={query}
+                            handleQuery={handleQuery}
+                        >
 
+                        </SearchBox>
+                    </div>
                 </div>
             </Container>
         </CSSTransition>
@@ -75,4 +90,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 export default connect(mapStateToProps,
-    mapDispatchToProps)(Search)
+    mapDispatchToProps)(React.memo(Search))
