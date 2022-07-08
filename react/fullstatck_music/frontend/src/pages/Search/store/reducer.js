@@ -6,21 +6,20 @@ const defaultState = {
     songsList: [],
     enterLoading: false
 }
-
-// redux状态 就是心相印 纸巾？用完就扔
-export default (state = defaultState, action) => {
-    switch (action.type) {
+// redux 状态就是心相印 纸巾？ 
+export default (state=defaultState, action) => {
+    switch(action.type) {
         case actionTypes.SET_HOT_KEYWORDS:
             return {
                 ...state,
                 hotList: action.data
             }
-        case actionTypes.SET_SUGGEST_LIST:
+        case actionTypes.SET_SUGGEUST_LIST:
             return {
                 ...state,
                 suggestList: action.data
             }
-        case actionTypes.SET_RESULT_LIST:
+        case actionTypes.SET_RESULT_SONGS_LIST:
             return {
                 ...state,
                 songsList: action.data

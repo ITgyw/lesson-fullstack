@@ -1,7 +1,8 @@
 import React, { useEffect, useState, memo } from 'react'
-import { SliderContainer } from './style'
 import Swiper from 'swiper'
-function Slider({ bannerList }) {
+import { SliderContainer  } from './style'
+
+function Slider ({ bannerList }) {
     const [sliderSwiper, setSliderSwiper] = useState(null)
     useEffect(() => {
         if (bannerList.length && !sliderSwiper) {
@@ -11,7 +12,7 @@ function Slider({ bannerList }) {
                     delay: 3000,
                     disableOnInteraction: false
                 },
-                pagination: { el: '.swiper-pagination' }
+                pagination:{el: '.swiper-pagination'}
             })
             setSliderSwiper(sliderSwiper)
         }
@@ -22,22 +23,22 @@ function Slider({ bannerList }) {
             <div className="before"></div>
             <div className="slider-container">
                 <div className="swiper-wrapper">
-                    {
-                        // 最好不用index 做key
-                        bannerList.map(slide => {
-                            return (
-                                <div className="swiper-slide"
-                                    key={slide.imageUrl}>
-                                    <div className="slider-nav">
-                                        <img src={slide.imageUrl}
-                                            width="100%"
-                                            height="100%"
-                                            alt="" />
-                                    </div>
+                {
+                    // 最好不用index 做key
+                    bannerList.map(slide => {
+                        return (
+                            <div className="swiper-slide" 
+                                key={slide.imageUrl}>
+                                <div className="slider-nav">
+                                    <img src={slide.imageUrl}
+                                        width="100%"
+                                        height="100%"
+                                    alt="" />
                                 </div>
-                            )
-                        })
-                    }
+                            </div>
+                        )
+                    })
+                }
                 </div>
                 <div className="swiper-pagination"></div>
             </div>
@@ -45,4 +46,4 @@ function Slider({ bannerList }) {
     )
 }
 
-export default memo(Slider)//memo(memory)
+export default memo(Slider)

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import style from '@/assets/global-style'
 
 const dance = keyframes`
@@ -13,10 +13,9 @@ const dance = keyframes`
 `
 const Loading = styled.div`
     position: absolute;
-    top:50%;
+    top: 50%;
     height: 10px;
     width: 100%;
-    margin: auto;
     text-align: center;
     font-size: 10px;
     >div{
@@ -54,5 +53,5 @@ function LoadingV2() {
     </Loading>
   );
 }
-
+ 
 export default React.memo(LoadingV2);

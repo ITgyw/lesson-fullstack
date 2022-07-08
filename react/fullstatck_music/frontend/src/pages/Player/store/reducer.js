@@ -1,9 +1,11 @@
 import * as actionTypes from './constants'
+
 const defaultState = {
     playList: []
 }
-export default (state = defaultState, action) => {
-    switch (action.type) {
+
+export default (state=defaultState, action) => {
+    switch(action.type) {
         case actionTypes.SET_PLAYLIST:
             return {
                 ...state,
@@ -11,6 +13,6 @@ export default (state = defaultState, action) => {
             }
             break;
         default:
-            return state;
+            return state
     }
 }

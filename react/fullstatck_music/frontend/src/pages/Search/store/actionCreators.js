@@ -1,5 +1,4 @@
 import * as actionTypes from './constants'
-
 import {
     getHotKeywordsRequest,
     getSuggestListRequest,
@@ -12,12 +11,12 @@ const changeHotKeywords = (data) => ({
 })
 
 const changeSuggestList = (data) => ({
-    type: actionTypes.SET_SUGGEST_LIST,
+    type: actionTypes.SET_SUGGEUST_LIST,
     data
 })
 
 const changeResultSongs = (data) => ({
-    type: actionTypes.SET_RESULT_LIST,
+    type: actionTypes.SET_RESULT_SONGS_LIST,
     data
 })
 
@@ -32,6 +31,18 @@ export const getHotKeywords = () => {
             .then(data => {
                 let list = data.result.hots;
                 dispatch(changeHotKeywords(list))
+            })
+    }
+} 
+
+export const getSuggestList = (query) => {
+    return dispatch => {
+        getSuggestListRequest(query)
+            .then(data => {
+                if (!data) return;
+                let res = data.result || [];
+                dispatch(changeSuggestList(res))
+                dispatch(changeEnterLoading(false))
             })
     }
 }
