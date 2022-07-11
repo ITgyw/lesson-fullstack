@@ -18,3 +18,13 @@
         js 是脚本语言 node 1.js
         前端的一些问题，在开发阶段就会暴露出来
         props 问题
+
+- change事件的typescript 化
+    1. e:React.ChangeEvent<HTMLInputElenment> 来自@types/react
+    2. 子组件向父组件 报告 调用函数
+        复杂性带给父组件
+    3. 父组件 接收子组件 传过来的value 
+        子组件 onChange 语义改成 onNameUpdated
+        中转一下
+
+- typescript 中架构多了一个model 
