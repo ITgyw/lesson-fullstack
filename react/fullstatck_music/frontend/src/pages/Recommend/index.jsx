@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { actionCreators } from './store/index'
 import { Content } from './style'
-import Scroll  from '@/components/common/Scroll'
+import Scroll from '@/components/common/Scroll'
 import Slider from '@/components/slider/'
 import RecommendList from '@/components/list/'
 import { forceCheck } from 'react-lazyload'
@@ -23,11 +23,10 @@ function Recommend(props) {
       <Scroll className="list" onScroll={forceCheck}>
         <div>
           <Slider bannerList={bannerList}></Slider>
-          <RecommendList recommendList={recommendList}/>
+          <RecommendList recommendList={recommendList} />
         </div>
       </Scroll>
-      { enterLoading? <EnterLoading>
-        <Loading></Loading></EnterLoading>: null}
+      {enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
     </Content>
   )
 }

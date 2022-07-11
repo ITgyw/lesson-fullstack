@@ -79,6 +79,8 @@ const SearchBox = (props) => {
 
     const clearQuery = () => {
         setQuery('');
+        queryRef.current.value = "";
+        queryRef.current.focus();
     }
     const handleChange = (e) => {
         let val = e.currentTarget.value
