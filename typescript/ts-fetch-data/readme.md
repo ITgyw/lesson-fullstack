@@ -32,3 +32,12 @@
 1. 父子组件传递时的接口
 2. 前后端有接口
 3. 组件 数据流
+
+- any 
+    keyof Color 值的范围  
+- typescript 有何魅力
+    1. 增强语言能力
+        interface 泛型 type keyof 
+        强类型
+    2. 编译能力 
+        编写边编译
