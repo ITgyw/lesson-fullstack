@@ -8,4 +8,11 @@
         电脑  Matc.random()   comChice page
     3. cpu: 内存中 调入CPU 计算， 得到结果  computer赢了
     4. 输出设备 (显示器)  computer赢了
-- 
+- 业务逻辑拆分 很清晰
+    index.js 负责 输入输出 使用了操作系统的冯洛伊曼原理
+    在硬件上的软件架构
+    throw new Error(message)  把进程终止掉
+    process.on 
+    process.exit  退下
+    c++ node buffer
+    
