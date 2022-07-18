@@ -1,4 +1,5 @@
 import * as actionTypes from '../constans'
+import { getAllGoodsRequest } from '../../api'
 
 export const checkGoodsAction = (goodsId) => ({
     type: actionTypes.CHECK_GOODS,
@@ -15,3 +16,17 @@ export const checkAllGoodsAction = (data) => ({
     type: actionTypes.CHECK_ALL_GOODS,
     data
 })
+
+export const setAllGoods = (data) => ({
+    type: actionTypes.SET_ALL_GOODS,
+    data
+})
+
+export const getAllGoodsAction = () => {
+    return (dispatch) => {
+        getAllGoodsRequest()
+            .then(data => {
+                dispatch(setAllGoods(data))
+            })
+    }
+}

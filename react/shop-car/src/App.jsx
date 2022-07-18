@@ -21,9 +21,13 @@ function App(props) {
   const {
     checkGoodsDispatch,
     changeGoodsNumDispatch,
-    changeAllGoodsDiaptch
+    checkAllGoodsDispatch,
+    getAllGoodsAction
   } = props
   // console.log(goodsList, checkAll);
+  const checkAllGoods = () => {
+    checkAllGoodsDispatch(checkAll)
+  }
   return (
     <div className="shoppingCartWrap">
       <div className="shoppingCartWrap_header">
@@ -73,7 +77,9 @@ function App(props) {
       </div>
       <div className="shoppingCartWrap_footer">
         <div className="shoppingCartWrap_footer_action">
-          <div className="shoppingCartWrap_footer_checkAll">
+          <div className="shoppingCartWrap_footer_checkAll"
+            onClick={() => checkAllGoods()}
+          >
             {
               checkAll ? <img src={checkedImg} /> : <img src={checkNormalImg} />
             }
@@ -109,8 +115,11 @@ const mapDispatchToProps = (dispatch) => {
     changeGoodsNumDispatch(data) {
       dispatch(changeGoodsNumAction(data))
     },
-    changeAllGoodsDiaptch(data) {
+    checkAllGoodsDispatch(data) {
       dispatch(checkAllGoodsAction(data))
+    },
+    getAllGoodsDispatch(data) {
+
     }
   }
 }
