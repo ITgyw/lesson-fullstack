@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 // 组件里的数据请求 由action 代替
 import {
   checkAllGoodsAction,
   checkGoodsAction,
-  changeGoodsNumAction
+  changeGoodsNumAction,
+  getAllGoodsAction
 } from './store/actionCreators'
 // 模块化管理 css 的一种方式， 把css 全部放到 assets/css
 import './assets/css/shoppingCart.css'
@@ -22,12 +23,31 @@ function App(props) {
     checkGoodsDispatch,
     changeGoodsNumDispatch,
     checkAllGoodsDispatch,
-    getAllGoodsAction
+    getAllGoodsDispatch
   } = props
   // console.log(goodsList, checkAll);
   const checkAllGoods = () => {
     checkAllGoodsDispatch(checkAll)
   }
+  const checkGoods = (goodsId) => {
+    // console.log(goodsId, '-------------')
+    checkGoodsDispatch(goodsId)
+  }
+
+  const changeGoodNum = (e, status, goodsId) => {
+    e.preventDefault();
+    e.stopPropagation();
+    let data = {
+      status: status,
+      goodsId: goodsId
+    }
+
+    changeGoodsNumDispatch(data)
+  }
+
+  useEffect(() => {
+    getAllGoodsDispatch();
+  }, [])
   return (
     <div className="shoppingCartWrap">
       <div className="shoppingCartWrap_header">
@@ -38,7 +58,9 @@ function App(props) {
           goodsList.map((item, index) => (
             <div
               className="shoppingCartWrap_content_list"
-              key={item.goodsId}>
+              key={item.goodsId}
+              onClick={() => checkGoods(item.goodsId)}
+            >
               <div className="shoppingCartWrap_content_check">
                 {
                   item.check ? <img src={checkedImg} /> : <img src={checkNormalImg} />
@@ -61,14 +83,18 @@ function App(props) {
                       display: 'flex',
                       justifyContent: 'center', alignItems: 'center'
                     }}>
-                      <div className="shoppingCartWarp_content_list_actionNumChangeButton">
+                      <div
+                        onClick={(e) => changeGoodNum(e, 'reduce', item.goodsId)}
+                        className="shoppingCartWarp_content_list_actionNumChangeButton">
                         -
                       </div>
                       <div className="shoppingCartWrap_content_list_actionNumInfo">
                         {item.goodsNum}</div>
                     </div>
                   }
-                  <div className="shoppingCartWarp_content_list_actionNumChangeButton">+</div>
+                  <div className="shoppingCartWarp_content_list_actionNumChangeButton"
+                    onClick={(e) => changeGoodNum(e, 'add', item.goodsId)}
+                  >+</div>
                 </div>
               </div>
             </div>
@@ -95,15 +121,15 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-
+  let price = state.cart.list.reduce((total, item) => total + (item.check ?
+    parseFloat(item.goodsPrice * item.goodsNum) : 0), 0)
   return {
     goodsList: state.cart.list,
     // 全选？ 状态？ redux 管理 
     // redux  <-  驱动 -> UI
     checkAll: state.cart.list.filter(
       item => item.check).length == state.cart.list.length,
-    price: state.cart.list.reduce((total, item) =>
-      total + item.check ? parseFloat(item.goodsPrice) * item.goodsNum : 0, 0)
+    price: price
 
   }
 }
@@ -118,8 +144,8 @@ const mapDispatchToProps = (dispatch) => {
     checkAllGoodsDispatch(data) {
       dispatch(checkAllGoodsAction(data))
     },
-    getAllGoodsDispatch(data) {
-
+    getAllGoodsDispatch() {
+      dispatch(getAllGoodsAction())
     }
   }
 }
