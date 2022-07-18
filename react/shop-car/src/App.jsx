@@ -1,13 +1,118 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
+// 组件里的数据请求 由action 代替
+import {
+  checkAllGoodsAction,
+  checkGoodsAction,
+  changeGoodsNumAction
+} from './store/actionCreators'
+// 模块化管理 css 的一种方式， 把css 全部放到 assets/css
+import './assets/css/shoppingCart.css'
+// 商品选中的图片
+import checkedImg from './assets/img/shopping_check.png'
+import checkNormalImg from './assets/img/shopping_checkNormal.png'
 
-function App() {
-
+function App(props) {
+  const {
+    goodsList,
+    checkAll,
+    price
+  } = props
+  const {
+    checkGoodsDispatch,
+    changeGoodsNumDispatch,
+    changeAllGoodsDiaptch
+  } = props
+  // console.log(goodsList, checkAll);
   return (
-    <div className="App">
-
+    <div className="shoppingCartWrap">
+      <div className="shoppingCartWrap_header">
+        <div>购物车</div>
+      </div>
+      <div className="shoppingCartWrap_content">
+        {
+          goodsList.map((item, index) => (
+            <div
+              className="shoppingCartWrap_content_list"
+              key={item.goodsId}>
+              <div className="shoppingCartWrap_content_check">
+                {
+                  item.check ? <img src={checkedImg} /> : <img src={checkNormalImg} />
+                }
+              </div>
+              <div className="shoppingCartWrap_content_list_imgWarp">
+                <img src={item.goodsSrc} alt="" />
+              </div>
+              <div className="shoppingCartWrap_content_list_info">
+                <div className="shoppingCartWrap_content_list_title">
+                  {item.goodsTitle}
+                </div>
+                <div className="shoppingCartWrap_content_list_subtitle">
+                  {item.goodsSubTitle}
+                </div>
+                <div className="shoppingCartWrap_content_list_action">
+                  {/* html + 数据绑定 = 静态的JSX  */}
+                  {
+                    item.goodsNum > 0 && <div style={{
+                      display: 'flex',
+                      justifyContent: 'center', alignItems: 'center'
+                    }}>
+                      <div className="shoppingCartWarp_content_list_actionNumChangeButton">
+                        -
+                      </div>
+                      <div className="shoppingCartWrap_content_list_actionNumInfo">
+                        {item.goodsNum}</div>
+                    </div>
+                  }
+                  <div className="shoppingCartWarp_content_list_actionNumChangeButton">+</div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div className="shoppingCartWrap_footer">
+        <div className="shoppingCartWrap_footer_action">
+          <div className="shoppingCartWrap_footer_checkAll">
+            {
+              checkAll ? <img src={checkedImg} /> : <img src={checkNormalImg} />
+            }
+            全选
+          </div>
+          <div className="shoppingCartWrap_footer_mount">
+            总计&nbsp;&nbsp;<span>{price.toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default connect()(React.memo(App))
+const mapStateToProps = (state) => {
+
+  return {
+    goodsList: state.cart.list,
+    // 全选？ 状态？ redux 管理 
+    // redux  <-  驱动 -> UI
+    checkAll: state.cart.list.filter(
+      item => item.check).length == state.cart.list.length,
+    price: state.cart.list.reduce((total, item) =>
+      total + item.check ? parseFloat(item.goodsPrice) * item.goodsNum : 0, 0)
+
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    checkGoodsDispatch(goodsId) {
+      dispatch(checkGoodsAction(goodsId))
+    },
+    changeGoodsNumDispatch(data) {
+      dispatch(changeGoodsNumAction(data))
+    },
+    changeAllGoodsDiaptch(data) {
+      dispatch(checkAllGoodsAction(data))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(App))

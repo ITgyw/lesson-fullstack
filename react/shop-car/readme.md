@@ -39,4 +39,8 @@
         goodsId statue 不好分析 add 
         -到0 时 check变为false
     4. CHECK_ALL_GOODS
-        
+
+- diff 
+    新 旧状态间的差异  diff 名词
+    HTTP Method PATCH 动词
+    ？ 热更新  hot reload 

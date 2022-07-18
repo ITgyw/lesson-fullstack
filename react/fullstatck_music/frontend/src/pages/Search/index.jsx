@@ -198,7 +198,6 @@ const Search = (props) => {
                 navigate(-1)
             }}
         >
-            {/* sc-evZas bAobGr fly-enter fly-enter-active */}
             <Container play={songsCount}>
                 <div className="search_box_wrapper">
                     <SearchBox
