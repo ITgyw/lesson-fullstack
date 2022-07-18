@@ -1,4 +1,5 @@
 // reducer 分支 goods
+import *as actionTypes from '../constans'
 let data = {
     list: [
         {
@@ -35,10 +36,59 @@ let data = {
         }
     ]
 }
-
+// 引用式赋值 
 export default function (state = data, action) {
     switch (action.type) {
+        // redux 查询计算  财务的角度
+        // 选择或反选
+
+        case actionTypes.CHECK_GOODS:
+            // 在reducer 重新计算前的状态 旧状态
+            let checkList = state.list;
+            checkList.map(item => {
+                if (item.goodsId == action.data) {
+                    item.check = !item.check
+                    item.goodsNum == '0' ? item.goodsNum = '1' : ''
+                }
+            })
+            // 新状态
+            return Object.assign({}, state, {
+                list: [...checkList]
+            })
+            break;
+        case actionTypes.CHANGE_GOODS_NUM:
+            let changeList = state.list
+            // + - 指定商品  action type CHANGE_GOODS_NUM data: {id:id,status:'add|minus} 
+            changeList.map(item => {
+                if (item.goodsId == action.data.goodsId) {
+                    action.data.status == 'add' ? item.goodsNum++ : item.goodsNum--;
+                    item.goodsNum == '0' ? item.check = false : ''
+                    // -1 UI 去做 item.goodsNum>0 && <button>-</button>
+                }
+            })
+            return Object.assign({}, state, { list: [...changeList] })
+            break;
+        case actionTypes.CHECK_ALL_GOODS:
+            // 全选和取消全选
+            // 旧状态
+            let checkALLList = state.list
+            checkALLList.map(item => {
+                item.check = !action.data
+            })
+            // 新状态
+            return Object.assign({}, state, { list: [...checkALLList] })
+            break;
         default:
-            return state
+            let list = state.list
+            list.map(item => {
+                item.check = true
+            })
+            // Object.assign 返回一个全新的对象 ，拥有state 和list
+            // 为了搞定引用式赋值 
+            // 使用了Object.assign 未来 ImmutableJS
+            // 将新的状态与原来的状态在物理层面上 绝对区分开
+            // redux 有洁癖 新状态，但是旧的状态是不是丢了？
+            // 每一次的状态都留下来 可以被追溯  
+            return Object.assign({}, state, { list: [...list] })
     }
 }
