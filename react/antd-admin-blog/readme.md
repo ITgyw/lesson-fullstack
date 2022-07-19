@@ -26,3 +26,17 @@
     3. api 
     4. reducer case 重新计算
     5. state.login true
+- canvas 绘图功能
+    1. html5 提供的绘图
+        - 游戏
+        - 数据可视化
+    2. document.createElement('canvas')
+    3. width heigh  window.innerWidth| innerHeigth
+    4. 绘图的api ctx = canvas.getContext('2d)
+    5. ctx.fillStyle
+        ctx.brginPath
+        ctx.closePath
+        ctx.fillRect
+        ctx.fill
+    6. window.requestAnimationFrame(drawFrame);
+        动画

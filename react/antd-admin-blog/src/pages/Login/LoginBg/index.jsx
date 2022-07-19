@@ -97,6 +97,14 @@ export default function LoginBg() {
             cvs.height = window.innerHeight;
             ctx.fillStyle = BACKGROUND_COLOR;
             ctx.fillRect(0, 0, cvs.width, cvs.height);
+            const arr = p0.x == null ? points : [p0].concat(points);
+            for (let i = 0; i < arr.length; i++) {
+                arr[i].draw();
+                arr[i].move();
+            }
+            // requestAnimationFrame 按电脑的刷新的新帧率来反复调用drawFrame 函数
+            // canvas 动态绘制的重要API
+            window.requestAnimationFrame(drawFrame);
         }
 
         initPoints(POINT_NUM)
