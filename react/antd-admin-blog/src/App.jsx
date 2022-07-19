@@ -8,7 +8,7 @@ function App(props) {
   const { login } = props;
   return (
     <>
-    {login?<Index />:<Login/>}
+      {login ? <Index /> : <Login />}
     </>
   )
 }
