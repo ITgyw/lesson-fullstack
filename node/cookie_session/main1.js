@@ -1,11 +1,12 @@
 // node api -> 框架层
-// react 单页应用 MVVM  模式的项目  Model  View ViewModel
-// 后端  模式？ MVC  Model(数据模型， model)   View(html) C(controller)
-// M V 不能直接通信 controller 来管理（业务） 
-const Koa = require('koa'); //  第三方 最好用的node 后端框架, 遵守mvc开发范式
-const app = new Koa(); // web server   server app 
-const path = require('path'); // 内置 
-// 支持静态服务的中间件
+// react 单页应用 MVVM 模式的项目  MOdel  View  ViewModel
+// 后端的模式是MVC model(数据模型)  View(html)  C (controller)
+// M V 是不能直接通信的 需要controller来管理(业务)
+
+const Koa = require('koa'); // 最好用的node 后端框架
+const app = new Koa(); // 把 web Server 看作 server app
+const path = require('path') // 内置
+// staticServer是支持静态服务的中间件
 const staticServer = require('koa-static');
 const koaSession = require('koa-session'); // 中间件
 
@@ -25,26 +26,24 @@ const session = koaSession(session_config, app)
 
 // 使用中间件，注意有先后顺序
 app.use(session); // 
-// use 启用一个中间件 函数
-// app.use  redux compose  
-// async  支持异步 
-// ctx  context 
-// req    =>  res
-// applyMiddleware 挂载一个中间件 
-// ctx = req + res 
-//静态服务器  js css img file 
-// 中间件有顺序， 数组， compose 
+// app.listen(1314)
+// use 启用一个中间件
+// 中间件是一个函数
+// async 支持异步
+// ctx context 上下文环境
+
+// req => res 的中间件
+
+// ctx = req + res
+
+// 静态服务器 js css img file
 app.use(staticServer(path.join(__dirname, './static')))
-// /post/:id
-// app.use()
+
 app.use(async ctx => {
-    // if (ctx.req.url == )
-    console.log(ctx.path, '--------------')
     if (ctx.path == '/login') {
-        // 登录？ 
         const { userName, password } = ctx.query;
-        // console.log(userName, password, '---------');
-        if (userName == 'test' && password == 'test') {
+        // console.log(userName, password, '-----');
+        if (userName == '123' && password == '123') {
             ctx.session.login = {
                 name: userName,
                 uid: 2,
@@ -53,31 +52,35 @@ app.use(async ctx => {
             }
             ctx.type = 'html'
             ctx.body = `
-            登录成功
-            <a href="/testlogin">去测试登录</a>
-            `;
+              登录成功
+              <a href="/testlogin">去测试登录</a>
+              `;
+        } else if (ctx.path == './testlogin') {
+            console.log(ctx.session, '/////');
+            if (!ctx.session.login.name) {
+                ctx.redirect('/');
+            }
+            else {
+                ctx.body = '已经登录' + ctx.session.login.name;
+            }
         }
-    } else if (ctx.path == '/testlogin') {
-        console.log(ctx.session, '/////');
-        if (!ctx.session.login.name) {
-            ctx.redirect('/');
-        }
-        else {
-            ctx.body = '已经登录' + ctx.session.login.name;
-        }
+        // ctx.body = ctx.url;
+
     }
 
-    // 后端种了一个uid 的cookie 
+    // 后端种了一个cookie
     // ctx.cookies.set('uid', '12345678', {
     //     path: '/admin',
-    //     maxAge: 1000* 10 * 60,
+    //     maxAge: 1000 * 10 * 60,
     //     httpOnly: true
     // })
-    // 动态数据 
-    // mvc   controller 
-    // 支持异步 
-    // 数据库的查询  
+    // 动态数据
+    // 支持异步
+
+    // 数据库的查询
     // await db.find()
-    // ctx.body = `Hello World`;
+
+    // ctx.body 给http请求设置响应体
+    // ctx.body = `hello world`;
 })
 app.listen(1318);
