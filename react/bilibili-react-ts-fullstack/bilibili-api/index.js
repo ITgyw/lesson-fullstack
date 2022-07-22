@@ -1,8 +1,10 @@
-// api 后端服务的单点入口文件 src/main.tsx
-const Koa = require('koa'); //http server
-const router = require('koa-router')();  //koa 路由中间件 BrowserRouter
+// api后端服务的单点入口文件 src/main.tsx
+const Koa = require('koa'); // http server 
+const router = require('koa-router')(); // koa 路由中间件 BrowserRouter
 const app = new Koa();
-// /xideo  get  [{}]
+const crossDomain = require('./middleware/cross-domain') // 支持跨域
+
+// /videos get     [{}]
 router.get('/getVideos', ctx => {
     const videos = [{
         id: 1,
@@ -20,11 +22,18 @@ router.get('/getVideos', ctx => {
     ctx.body = videos
 })
 
+router.get('/banners', ctx => {
+    const banners = [{
+    }];
+    ctx.body = banners;
+})
+
+app.use(crossDomain)
 app.use(router.routes())
-// ctx = req 用户请求 + 中间件{n} +  res响应请求
-// 中间件函数
+// ctx = req 用户请求 + 中间件{n}   +  res响应结果 
+// 中间件函数 
+
 app.use((ctx) => {
-    // body 设置http四部分中的响应体
     ctx.body = 'hello world'
 })
 

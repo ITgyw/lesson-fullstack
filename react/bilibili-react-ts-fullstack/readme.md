@@ -71,3 +71,25 @@
     4. 有顺序的
     5. 请求响应过程中，所有的中间件会按顺序给我们提供服务，
         也可以提前退出中间件服务  也会出现服务跳过的情况
+
+- 前端的api ts 注意哪些
+    1. 要请求的数据， 严格要求， 那么
+        ts  models/ 架构文件夹
+        对数据进行建模  interface 表的字段 -> interface
+    3. 对接口函数
+        - 函数的返回值 (resolve,reject):Promise<Video[]> => { }
+            Video[] 为约束值T
+        - new Promise<Video[]> 显示指定未来的结果 不然返回的值 unknow =>
+            unknow 是ts 的类型
+
+- 在App.tsx 生命周期中通过api
+    从 http://localhost:3000 向 http://localhost:3300/getVideos 
+    请求失败？ 原因是什么？
+    跨域了， 前端在3000  后端在3300 
+    url里  http://www.baidu.com:3000/a?b=1#hhh  301  302  307 重定向
+           http://www.baidu.com:3000/a?b=1#hhh  算跨域
+           http://www.baidu.com:3300/a?b=1#hhh  算跨域
+           http://www.google.com:3300/a?b=1#hhh  算跨域
+    跨域有安全问题，按这些规则来
+    1. cors 
+        后端解决方案
