@@ -31,4 +31,17 @@
     - tsconfig.json  compilerOptions
         baseUrl
         paths 告诉我们ts  添加预编译的路径
-        
+- @types/node @types/react  有点像
+    有node 里相关的类型声明可以用， process:Process 进程
+    @types/ 就是ts 类型声明需要的 interface type
+
+- 全栈 项目中 数据从服务器端  到  页面显示
+    经过哪些地方？
+    audios
+    1. 后端给我们一个数据接口 /api  某个返回promise 的函数
+        url/audios GET  res: JSON 数组
+    2. bilibili-api 需要跟前端的api 对接的 
+        怎么满足1？
+        - http 服务 
+
+
