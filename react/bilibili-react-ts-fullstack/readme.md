@@ -46,7 +46,7 @@
             https://localhost:3300/audios   
             baidu.com   dns解析   ip
     3. /audios  GET [{}]
-        ewact-router  负责的？
+        react-router  负责的？
         koa-router
         - /audios  路径，前端后端都能设置吗？
             - 前端路由？ 前端可以， audios  路由级别页面  单页应用
@@ -90,6 +90,29 @@
            http://www.baidu.com:3000/a?b=1#hhh  算跨域
            http://www.baidu.com:3300/a?b=1#hhh  算跨域
            http://www.google.com:3300/a?b=1#hhh  算跨域
+           http://www.map.baidu.com:3300/a?b=1#hhh  算跨域
     跨域有安全问题，按这些规则来
     1. cors 
         后端解决方案
+
+- js 浏览器中有一个 同源机制的概念
+
+- 搜索API
+    1. 通过Chrome 找到了B站的API 地址， 拿到了结果
+    2. 不放到fastmock
+    3. 自己的bilibili-api 提供
+        - router.get("/search/suggest", async (ctx, next) => {})
+        - ctx.query.w 
+    4. node-fetch  是node的fetch， 原因是node 对js 最新功能的支持没有那么快
+        node-fetch  可以用于node 发送fetch请求 es6 fetch一样
+    5. node 去向B站发送远程接口请求的时候， B站是接受这次跨域请求的。
+        - 路由 + 假数据   代替 fastmock， 自建web 后端服务，为前端提供api
+        - 如果想B站一样， 支持跨域请求API
+            1. chrome network xhr 查看请求
+                url method query.....
+            2. node api  封装这次请求
+                - url domian/patc 常量
+                - query array [key = value]
+                    = url + array.join('&)
+                - then 
+                - try { } catch()
