@@ -9,9 +9,9 @@ function App() {
   const [isVisible, setVisible] = useState(false)
   // 类型参数 T
   const [color, setColor] = useState<Color>({
-    red: 20,
-    green: 40,
-    blue: 180
+    red: 180,
+    green: 20,
+    blue: 20
   })
 
   return (
