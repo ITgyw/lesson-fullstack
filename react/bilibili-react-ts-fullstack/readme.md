@@ -102,7 +102,11 @@
     2. 不放到fastmock
     3. 自己的bilibili-api 提供
         - router.get("/search/suggest", async (ctx, next) => {})
-        - ctx.query.w 
+        - ctx.query.w  查询字符串拿出来， koa qs 变成对象， encodeURI
+        - try  catch 确保后端融创处理
+            - js 是单线程， 出错了， web程序就挂了，无法提供访问
+            - try {可能会出错的} catch(e) {....}
+
     4. node-fetch  是node的fetch， 原因是node 对js 最新功能的支持没有那么快
         node-fetch  可以用于node 发送fetch请求 es6 fetch一样
     5. node 去向B站发送远程接口请求的时候， B站是接受这次跨域请求的。
@@ -116,3 +120,18 @@
                     = url + array.join('&)
                 - then 
                 - try { } catch()
+
+- api 服务准备res响应准备
+    let resData = {
+        code:1, 
+        msg: "OK"
+    }
+    B站 code:0 成功
+    将B站返回的数据 data.result 写入resData
+
+- api 服务的使命
+    1. http 服务
+    2. router  method  url 响应
+    3. try catch 容错
+    4. 准备好json 数据 响应  res.body
+     
