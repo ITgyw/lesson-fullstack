@@ -134,4 +134,22 @@
     2. router  method  url 响应
     3. try catch 容错
     4. 准备好json 数据 响应  res.body
-     
+
+
+
+## 前端
+- typescript
+    - component
+    - api
+    - store
+
+- reducer + typescript 怎么做
+    1. 架构调整了  combineReducers  + n reducer 函数 写在一个文件里
+    2. npm i @types/redux --save-dev  开发阶段
+        build  js
+    3. AnyAction 类型  action: AnyAction
+    4. 在action中 添加
+    5. 在异步的action里面 约定一下 dispatch:Diapatch<anyAction>
+        - 一定会调用一个同步的action anyAction
+    6. redux 需要的最基础typescript 搞定了
+    
