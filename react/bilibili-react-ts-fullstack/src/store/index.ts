@@ -12,4 +12,9 @@ const store = createStore(reducers,
         )
     ))
 
+// rootState  state 状态类型
+// type 和 interface 都是 ts 里的类型声明
+// 用 type 自定义类型 
+export type rootState = ReturnType<typeof reducers>
+
 export default store;
