@@ -162,6 +162,9 @@
         3. 在浏览器运行 js  瞬间的编译阶段    变量提升阶段
         4. 运行
         window as any   断言   assert
-    = thunk as ThunkMiddleware  断言
-
+    - thunk as ThunkMiddleware  断言
+    - 提供state   rootState自定义类型  ReturnType<typeof reducers>
+        state.serach   :rootState 给ts一个推断的能力 使代码写起来更快
+        正确性   多人协作
+    - connect   state:rootState 
     

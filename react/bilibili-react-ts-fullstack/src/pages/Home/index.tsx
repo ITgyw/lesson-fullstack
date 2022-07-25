@@ -1,16 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { rootState } from '@/store'
-function Home() {
+interface HomeProps {
+    loading: Boolean
+}
+const Home: React.FC<HomeProps> = (props) => {
+    const { loading } = props
     return (
         <div>
-            Home
+            {loading && <div>加载中...</div>}
         </div>
     )
 }
 
 
 const mapStateToProps = (state: rootState) => ({
-    hotword: state.search.hotword
+    hotword: state.search.hotword,
+    loading: state.loading
 })
 export default connect(mapStateToProps)(Home)

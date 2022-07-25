@@ -1,4 +1,5 @@
 // reducer +  combineReducers
+import { loadavg } from 'os';
 import { combineReducers, AnyAction } from 'redux'
 import * as ActionTypes from './action-types';
 // 但从未读取其值?   后面没用到， 引入没必要 ts  代码正确
@@ -6,7 +7,8 @@ import * as ActionTypes from './action-types';
 
 
 const initalState = {
-    // 分支 
+    loading: true,
+    // 搜索分支 
     search: {
         suggest: [],
         hotword: [],
@@ -41,7 +43,15 @@ const combineSearch = (state = initalState.search, action: AnyAction) => {
             return state
     }
 }
+const combineLoading = (state = initalState.loading, action: AnyAction) => {
+    switch (action.type) {
+        default:
+            return state
+    }
+
+}
 
 export default combineReducers({
-    search: combineSearch
+    search: combineSearch,
+    loading: combineLoading
 })
