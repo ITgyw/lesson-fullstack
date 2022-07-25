@@ -10,6 +10,9 @@ const {
 } = require('./api')
 // const crossDomain = require('./middleware/cross-domain') // 支持跨域
 
+// 首页菜单分类数据
+const partitionData = require('./data/partitions')
+
 // /videos get     [{}]
 router.get('/getVideos', ctx => {
     const videos = [{
@@ -100,6 +103,9 @@ router.get("/search", async (ctx, next) => {
     } catch (e) {
         next(e)
     }
+})
+router.get("/partitions", (ctx, next) => {
+    ctx.body = partitionData
 })
 
 app.use(cors())

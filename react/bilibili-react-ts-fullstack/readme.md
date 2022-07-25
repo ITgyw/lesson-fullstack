@@ -167,4 +167,36 @@
         state.serach   :rootState 给ts一个推断的能力 使代码写起来更快
         正确性   多人协作
     - connect   state:rootState 
-    
+
+- bilibili  首页tab   功能
+    - antd mobile  tabs  dropdown
+    - 数据流角度
+
+- api 数据怎么提供
+    1. 抖音等没有移动网页的应用
+        抓包 代理工具 fiddler app 
+    2. 缓存  304 Not Modified
+    3. 单点路口  景区入口
+        http服务的启动
+        中间件服务（路由）的挂载
+        模块化放到其他的地方
+        简单，简洁
+        MVC model 模型层  数据库的抽象
+            view  html模板
+            controllers 控制器(检验参数 解析出来 page1  pageSize)
+    4. 构建数据的模型能力
+        B站 首页多级菜单
+        - 树状结构
+        - 0   第一级菜单
+            每个菜单项 {tid: 1,  typename: "动画"}
+            tid 唯一  typename 标题
+        - tid 1 父
+            1：[{tid: 33, typename: "MAD·AMV"}...]
+        - class 声明  模块化， ts 要求比较严格  export {}
+            children：PartitionType[]
+- model层  ts 写法
+    1. model 归属 ts 
+    2. type interface class 关键字
+        都可以声明类型
+    3. 每个架构级别目录下  添加 index.ts 文件
+        方便引入
