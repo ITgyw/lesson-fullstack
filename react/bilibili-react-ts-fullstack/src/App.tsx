@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import './App.css'
+import Routes from '@/routes'
 import {
   getVideosRequest,
   getHotwordRequest
@@ -18,7 +19,9 @@ function App() {
   }, [])
   return (
     <div className="App">
-
+      <Suspense fallback={null}>
+        <Routes />
+      </Suspense>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { connect } from 'react-redux'
 function Home() {
     return (
         <div>
@@ -9,4 +9,7 @@ function Home() {
 }
 
 
-export default Home
+const mapStateToProps = (state: any) => ({
+    hotword: state.search.hotword
+})
+export default connect(mapStateToProps)(Home)

@@ -152,4 +152,16 @@
     5. 在异步的action里面 约定一下 dispatch:Diapatch<anyAction>
         - 一定会调用一个同步的action anyAction
     6. redux 需要的最基础typescript 搞定了
+
+- redux  typescript 使用
+    - store 数据流管理的的store 单例 (设计模式Singleton createStore ？ new 
+    store?) (由conbineReducers 返回的单一状态树 State)
+        1. window as any  断言 跳过 ts 编译阶段的检测  ts 语法编译
+        只有运行在浏览器端才有window对象
+        2. ts  vite  js后   工程化  build   main.js
+        3. 在浏览器运行 js  瞬间的编译阶段    变量提升阶段
+        4. 运行
+        window as any   断言   assert
+    = thunk as ThunkMiddleware  断言
+
     
