@@ -1,8 +1,8 @@
-// export interface Video {
-//     id: number;
-//     name: string;
-//     pic: string;
-// }
+export interface Video {
+    id: number;
+    name: string;
+    pic: string;
+}
 
 // 说明的作用
 export {

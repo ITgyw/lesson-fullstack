@@ -8,6 +8,9 @@ import * as ActionTypes from './action-types';
 
 const initalState = {
     loading: true,
+    home: {
+        partitions: {}
+    },
     // 搜索分支 
     search: {
         suggest: [],
@@ -50,7 +53,17 @@ const combineLoading = (state = initalState.loading, action: AnyAction) => {
     }
 
 }
-
+const combineHome = (state = initalState.home, action: AnyAction) => {
+    switch (action.type) {
+        case ActionTypes.SET_PARTITIONS:
+            return {
+                ...state.partitions,
+                partitions: action.data
+            }
+        default:
+            return state
+    }
+}
 export default combineReducers({
     search: combineSearch,
     loading: combineLoading

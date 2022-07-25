@@ -200,3 +200,15 @@
         都可以声明类型
     3. 每个架构级别目录下  添加 index.ts 文件
         方便引入
+
+- PartitionTypes 从 后端到前端  完整的数据流
+    1. 源头
+        GET /partitions  获取api服务器
+    2. 前端
+        api/getPartitionTypeRequest
+    3. redux  
+        异步的action 结合models 校验
+        再dispatch同步action
+        reducer 重新计算
+    4. connect mapStateProps state:rootState
+    5. 组件  props 结构  
