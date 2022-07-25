@@ -1,17 +1,14 @@
 // reducer +  combineReducers
-import { loadavg } from 'os';
-import { combineReducers, AnyAction } from 'redux'
+import { combineReducers, AnyAction } from 'redux';
 import * as ActionTypes from './action-types';
 // 但从未读取其值?   后面没用到， 引入没必要 ts  代码正确
 // tree-sharking 黄叶子 
-
-
 const initalState = {
     loading: true,
     home: {
         partitions: {}
     },
-    // 搜索分支 
+    // 分支 
     search: {
         suggest: [],
         hotword: [],
@@ -46,12 +43,12 @@ const combineSearch = (state = initalState.search, action: AnyAction) => {
             return state
     }
 }
+
 const combineLoading = (state = initalState.loading, action: AnyAction) => {
     switch (action.type) {
         default:
             return state
     }
-
 }
 const combineHome = (state = initalState.home, action: AnyAction) => {
     switch (action.type) {
@@ -60,11 +57,14 @@ const combineHome = (state = initalState.home, action: AnyAction) => {
                 ...state.partitions,
                 partitions: action.data
             }
+            break;
         default:
             return state
     }
 }
+
 export default combineReducers({
     search: combineSearch,
-    loading: combineLoading
+    loading: combineLoading,
+    home: combineHome
 })

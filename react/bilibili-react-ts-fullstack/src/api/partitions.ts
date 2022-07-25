@@ -1,13 +1,11 @@
-import { PartitionType } from
-// 模块化 接口多
-export const getHotwordRequest = (): Promise<any[]> => {
-
-    const p = new Promise<any[]>((resolve, reject) => {
-        fetch('http://localhost:3300/search/hotword')
+import { PartitionType } from '@/models'
+// 模块化 接口多 
+export const getPartitionsRequest = (): Promise<PartitionType[]> => {
+    const p = new Promise<PartitionType[]>((resolve, reject) => {
+        fetch('http://localhost:3300/partitions')
             .then(data => data.json())
             .then(data => {
-                console.log(data);
-                resolve(data)
+                resolve(data);
             })
     });
     return p;

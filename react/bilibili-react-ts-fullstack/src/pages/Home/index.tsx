@@ -5,19 +5,20 @@ import { Dispatch } from 'redux'
 import { getPartitions } from '@/store/actions/partitions'
 interface HomeProps {
     loading: Boolean;
+    getPartitionsDispatch: () => void;
 }
 
 const Home: React.FC<HomeProps> = (props) => {
     const { loading } = props
-    const { getPartitionDispatch } = props;
+    const { getPartitionsDispatch } = props;
     useEffect(() => {
-        getPartitionDispatch(;)
-}, [])
-return (
-    <div>
-        {loading && <div>加载中...</div>}
-    </div>
-)
+        getPartitionsDispatch();
+    }, [])
+    return (
+        <div>
+            {loading && <div>加载中...</div>}
+        </div>
+    )
 }
 
 const mapStateToProps = (state: rootState) => ({
