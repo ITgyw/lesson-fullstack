@@ -16,3 +16,10 @@
     4. index.js 根路由 router.use('./serach',searchRouter)
     5. app.use(router.routes()) 
 - fastmock -> routes + data
+
+- 前端 react 全家桶 + ts
+    - 准备
+        - css reset iconfont rem.js
+            styled-components 提供的createGlobalStyle IconStyle
+            rem.ts 要模块化
+        - vite.config.js  alias

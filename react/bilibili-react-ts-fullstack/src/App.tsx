@@ -5,6 +5,7 @@ import {
   getHotwordRequest
 } from '@/api/index'
 import Routes from '@/routes'
+import { isObject } from 'util'
 
 function App() {
   useEffect(() => {
