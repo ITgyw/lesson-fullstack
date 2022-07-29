@@ -5,17 +5,17 @@ import Logo from '@/components/Logo'
 import Avatar from '@/components/Avatar'
 
 export default function Header() {
-    return (
-        <HeaderWrapper>
-            <Link to="/" className='logo'>
-                <Logo />
-            </Link>
-            <Link to="/space" className='avatar'>
-                <Avatar />
-            </Link>
-            <Link to="/search" className='search-box'>
-                <i className='icon-search'></i>
-            </Link>
-        </HeaderWrapper>
-    )
+  return (
+    <HeaderWrapper>
+        <Link to="/" className="logo">
+          <Logo/>
+        </Link>
+        <Link to="/space" className="avatar">
+          <Avatar />
+        </Link>
+        <Link to="/search" className="search-icon">
+          <i className="icon-search"></i>
+        </Link>
+    </HeaderWrapper>
+  )
 }
