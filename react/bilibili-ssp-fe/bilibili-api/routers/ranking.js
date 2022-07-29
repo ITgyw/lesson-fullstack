@@ -7,9 +7,9 @@ const {
 // 排行榜菜单
 router.get('/partitions', (ctx, next) => {
     const resData = {
-        code: "1",
-        msg: "success",
-        data: rankingPartitions
+        data: rankingPartitions,
+        code: 0,
+        message: "0"
     }
     ctx.body = resData
 })
@@ -20,7 +20,7 @@ router.get('/:rId', async (ctx, next) => {
         // 分层 api | controller
         const data = await fetchRankingById(rId)
         ctx.body = data
-    } catch (e) {
+    } catch(e) {
         next(e)
     }
 })
