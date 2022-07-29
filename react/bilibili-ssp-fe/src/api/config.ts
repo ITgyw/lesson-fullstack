@@ -1,12 +1,12 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export const baseURL = "http://localhost:3011";
-// axios的实例及拦截配置
+// axios 的实例及拦截配置
 const axiosInstance = axios.create({
     baseURL
 })
 
-// 响应拦截
+// 响应时
 axiosInstance.interceptors.response.use(
     res => res.data,
     err => {
@@ -14,4 +14,4 @@ axiosInstance.interceptors.response.use(
     }
 )
 
-export { axiosInstance }
+export { axiosInstance } 
