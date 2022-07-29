@@ -1,4 +1,4 @@
 export {
     PartitionType,
     createPartitionTypes
-} from "./partitionType";
+} from "./PartitionType";
