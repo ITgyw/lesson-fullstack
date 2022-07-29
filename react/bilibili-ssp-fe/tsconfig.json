@@ -27,7 +27,8 @@
     }
   },
   "include": [
-    "src"
+    "src",
+    "bilibili-api/routers/ranking.js"
   ],
   "references": [
     {
