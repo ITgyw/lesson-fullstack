@@ -23,3 +23,5 @@ export const HomeWrapper = styled.div`
         }
     }
 `
+export const ContentWrapper = styled.div`
+`

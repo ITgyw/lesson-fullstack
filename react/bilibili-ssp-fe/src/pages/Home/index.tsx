@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react'
 import Header from '@/components/Header'
+import VideoItem from '@/components/VideoItem'
 import { getPartitionsRequest } from '@/api/request'
 import { connect } from 'react-redux'
 import { rootState } from '@/store'
 import { Dispatch } from 'redux'
 import { getHomeDataAction } from '@/store/actionCreators'
-import { HomeWrapper } from './style'
+import {
+  HomeWrapper,
+  ContentWrapper
+} from './style'
 import { PartitionType } from '@/models/index'
 import TabBar from '@/components/TabBar'
+import { formatTenThousand } from '@/utils/string'
 
 interface HomeProps {
   loading: boolean;
@@ -37,6 +42,14 @@ const Home: React.FC<HomeProps> = (props) => {
   const tabBarData: PartitionType[] = [{ id: 0, name: "首页" }]
     .concat(oneLevelPartitions);
   tabBarData.push({ id: -1, name: "直播" })
+  console.log(formatTenThousand(1218807));
+
+  const videoElements = rankingVideos.map(
+    (video) => <VideoItem
+      video={video}
+      key={video.aId}
+      showStatistics={true} />
+  )
 
   return (
     <HomeWrapper className="top-wrapper">
@@ -53,6 +66,11 @@ const Home: React.FC<HomeProps> = (props) => {
           <i className="icon-arrow-down"></i>
         </div>
       </div>
+      <ContentWrapper>
+        <div className="video-list clear">
+          {videoElements}
+        </div>
+      </ContentWrapper>
     </HomeWrapper>
   )
 }
@@ -60,7 +78,7 @@ const Home: React.FC<HomeProps> = (props) => {
 const mapStateToProps = (state: rootState) => ({
   loading: state.loading,
   rankingPartitions: state.ranking.rankingPartitions,
-  rankingVideos: state.ranking.rankingVideos, 7
+  rankingVideos: state.ranking.rankingVideos,
   oneLevelPartitions: state.partitions.oneLevelPartitions
 })
 
