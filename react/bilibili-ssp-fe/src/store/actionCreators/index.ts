@@ -1,4 +1,46 @@
-import { Dispatch} from 'redux'
+// import { Dispatch } from 'redux'
+// import * as actionTypes from '../constants'
+// import {
+//     getRankingPartitionsRequest, getRankingRequest, getPartitionsRequest
+// } from '@/api/request'
+// // 页面级别action
+// // promise.all
+// export const getHomeDataAction = (rId: string) => {
+//     return (dispatch: Dispatch) => {
+//         return Promise.all([
+//             getPartitionsRequest(),
+//             getRankingPartitionsRequest(),
+//             getRankingRequest(rId)
+//         ]).then(([partitionsResult, rankingpartitionsResult, videoResult]) => {
+//             let partitions = partitionsResult.data[0]
+//             dispatch(setRankingPartitions(rankingpartitionsResult.data))
+//             dispatch(setOneLevelPartitions(partitions))
+//             dispatch(setLoading(false))
+//         })
+//     }
+// }
+
+// export const setRankingVideos = (data: any[]) => ({
+//     tyoe: actionTypes.SET_RANKING_VIDEOS,
+//     data
+// })
+// export const setRankingPartitions = (data: any[]) => ({
+//     type: actionTypes.SET_RANKING_PARTITIONS,
+//     data
+// })
+// export const setRanking = (data: any[]) => ({
+//     type: actionTypes.SET_RANKING_VIDEOS,
+//     data
+// })
+// export const setOneLevelPartitions = (data: any[]) => ({
+//     type: actionTypes.SET_ONE_LEVEL_PARTITIONS,
+//     data
+// })
+// export const setLoading = (data: boolean) => ({
+//     type: actionTypes.SET_LOADING,
+//     data
+// })
+import { Dispatch } from 'redux'
 import * as actionTypes from '../constants'
 import {
     getRankingPartitionsRequest,
@@ -9,10 +51,10 @@ import {
 // 页面级别action  
 // promise.all 
 export const getHomeDataAction = (rId: string) => {
-    return (dispatch:Dispatch) => {
+    return (dispatch: Dispatch) => {
         dispatch(setLoading(true))
         return Promise.all([
-            getPartitionsRequest(), 
+            getPartitionsRequest(),
             getRankingPartitionsRequest(),
             getRankingRequest(rId),
         ]).then(([partitionsResult, rankingPartitionsResult, videoResult]) => {
@@ -47,3 +89,5 @@ export const setRankingVideos = (data: any[]) => ({
     type: actionTypes.SET_RANKING_VIDEOS,
     data
 })
+
+
