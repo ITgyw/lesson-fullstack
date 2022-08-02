@@ -45,11 +45,14 @@ const Home: React.FC<HomeProps> = (props) => {
   console.log(formatTenThousand(1218807));
 
   const videoElements = rankingVideos.map(
-    (video) => <VideoItem
-      video={video}
-      key={video.aId}
-      showStatistics={true} />
-  )
+    (video) => {
+      // console.log(video.pic)
+      // video.pic = pic
+      return <VideoItem
+        video={video}
+        key={video.aid}
+        showStatistics={true} />
+    })
 
   return (
     <HomeWrapper className="top-wrapper">
