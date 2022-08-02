@@ -5,8 +5,8 @@ interface Video {
     aid: number;
     title: string;
     pic: string;
-    playCount: number;
-    barrageCount: number;
+    play: number;
+    pts: number;
     publicDate: number;
     duration: string;
     cid: number;
