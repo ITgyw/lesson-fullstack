@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let geo = {
+            lat: '26.682',
+            lng: '115.8579'
+        }
+        // let geo = ['26.682', '115.8579']
+        localStorage.setItem('geo', JSON.stringify(geo))
+        // console.log(geo);
+        console.log(JSON.parse(localStorage.getItem('geo')));
+        // window.localStorage.setItem('ls_name', '胡'); //在一直在
+        // sessionStorage.setItem('ss_name', '阿毛'); // 存在会话中
+    </script>
+</body>
+
+</html>
