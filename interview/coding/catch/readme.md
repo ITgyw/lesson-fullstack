@@ -1,4 +1,4 @@
-缓存 catch  并不是storage
+# 缓存 catch  并不是storage
 - 前端  后端  运维
     - 前端性能优化
         1. 防抖节流  手写
