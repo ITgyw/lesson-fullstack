@@ -80,11 +80,63 @@
             background-color: #6633ff
         }
     }
+
+- 502 与 504
+    5XX 服务器端错误
+    - 迟迟不响应  数据库    504  Gatway Timeout  
+        很多台数据库服务器？ 同步机制 
+        中间件 数据库连接 配置timeout
+    - java/node/php 等后端错误  502 Bad Gatway  
+        js 单线程的  如果挂了 就有pm2软件来重启
+        服务器是多线程，多核CPU （node 哪个模块 多核运行 cluster）
+        ngnix 负载均衡还有代理
+        https  443
+    
+- 类型
+    1. 深入理解JavaScript的基础类型和引用类型
+    primitive  toString  Person  Number
+
+       typeof Symbol()  简单数据
+       typeof null
+       Object.prototype.toString.call()  引用类型(复杂对象)  内置的子类  Array Object Data  Regexp
+       why?  有一个内置的内部属性[[class]] Date
+       instanceof 自定义类型的实例化， 原型关系   
+    2. 隐式类型转换 遵守强制类型转换原则
+        - String() 包装类
+        - Number()     
+    - 简单数据类型转换 比较和直觉
+    - Object的子类型toString 不一致
+        Object 类型进行toString
+        原型链上的 toString方法
+        调用了对象上的toString（）
+    - Number（）没有String（）那么便利
+        对象在转number之前，先转换为基础类型（过程是用valueof方法可以是number之外的基础类），再转换为number类型 这个过程叫toPrimitive
+        1. valueOf
+        2. toString() 有希望
+
+- 隐式类型转换的套路 +(拼接，运算) ==（值等的话， 努力去类型转换）  
+    - +
+        1. 遵守强制类型转换的规则
+            [] + {} = [object,Object]
+            {} + [] = 0
+        2. x + y 
+
+
+    - == 
+         ==(input number) === ?
+        1. 对于数字和字符串的抽象比较，字符串 toNumber
+        2. 对于boolean 和其他类型， 先将boolean ToNumber 比较
+        3. 对于对象和基础类型的比较，将对象toPrimitive 比较
+        4. 对象之间的比较 ，引用的同一对象 true ,否则false 
+
+
+
     
 
 
 
-       
 
 
 
+
+                              
