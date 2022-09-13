@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手写Promise</title>
+</head>
+
+<body>
+    <script>
+        const PENDING = 'pending';
+        const FULFILLED = 'fulfilled';
+        const REJECTED = 'rejected';
+
+        class MyPromise {
+            // 
+            constructor(executor) {
+                // 
+                executor(this.resolve, this.reject) // 同步 立即执行
+            }
+            status = PENDING
+            value = null
+            reason = null
+            // 声明方法像声明属性一样
+            // 为什么用箭头函数
+            // this
+            resolve = (value) => {
+                // console.log(this, '-------');
+                if (this.status === PENDING) { // 不可逆                   
+                    this.status = FULFILLED
+                    this.value = value
+                }
+            }
+            reject = (reason) => {
+                if (ths.status === PENDING) {
+                    this.status = REJECTED
+                    this.reason = reason
+                }
+            }
+            then(onFulfilled, onRejeted) {
+                if (this.status === FULFILLED) {
+                    onFulfilled(this.value)
+                } else if (this.status === REJECTED) {
+                    onRejeted(this.reason)
+                }
+            }
+        }
+
+
+        const promise = new MyPromise((resolve, reject) => {
+            resolve('success')
+            // 无效
+            // reject('err')
+        })
+        // catch 还没上场，promise.then接受可选的两个参数
+        promise.then(
+            value => {
+                console.log('resolve', value);
+            },
+            reason => {
+                console.log('reject', reason);
+            }
+        )
+
+    </script>
+</body>
+
+</html>
