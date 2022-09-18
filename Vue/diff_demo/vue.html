@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 编程</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+        <!-- 
+            vue 支持双向绑定
+            v-model 指令 react 没有相当于props   
+         -->
+        <input type="text" v-model="title">
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        // API 约定大于js语法，react 反过来
+
+        // 组件App 
+        const App = {
+            // 配置式的声明
+            data() {  // data 部分 就是组件的api部分
+                return {
+                    title: ""
+                }
+            }
+        }
+        // 框架的命名空间
+
+        // 第一次的挂载
+        // 组件化
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+
+</html>
