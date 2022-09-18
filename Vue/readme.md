@@ -27,3 +27,11 @@
         - {{todos.filter(v => !v.todo).length}} / {{todos.length}}
             提升模板的可读性
             
+# 一个完整项目的步骤
+1. npm init vite
+2. set name
+3. select vue
+4. api 文件夹
+
+- css 的预编译器：
+   Sass、Less和Stylus
