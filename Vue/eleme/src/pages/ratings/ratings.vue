@@ -1,5 +1,5 @@
 <template>
   <div>
-    ratings
+    ra
   </div>
 </template>

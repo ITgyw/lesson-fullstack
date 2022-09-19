@@ -9,7 +9,7 @@ const routes = [{
     path: '/goods',
     component: goods
 }, {
-    path: '/ratigs',
+    path: '/ratings',
     component: ratings
 }, {
     path: '/seller',
