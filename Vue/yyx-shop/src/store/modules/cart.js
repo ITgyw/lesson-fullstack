@@ -1,9 +1,8 @@
 const state = {
-    items:[
-    ]
+    items:[]
 }
 // 组件里有computed 
-// vuex 四大家族 getters 是对状态的加工
+// vuex 四大家族（state,getters,actions,mutations) getters 是对状态的修饰加工
 const getters = {
     cartProducts: (state, getters, rootState) => {
         // 
@@ -27,7 +26,7 @@ const getters = {
 }
 
 const actions = {
-    // action 可以得到vuex 给与的提交mutations 和 状态
+    // action 可以得到vuex 给与的提交mutations函数 和 状态
     addProductToCart({ state, commit }, product) {
         // console.log(product)
         // 仓库有货

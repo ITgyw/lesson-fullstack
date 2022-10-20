@@ -18,8 +18,8 @@
   1. package.json  工程化的入口
     npm run dev 
       webpack  去配置  
-      webpack-dev-server --inline 
-      --progress --config build/webpack.dev.conf.js
+      webpack-dev-server --inline 热更新
+      --progress 进度条 --config指定配置文件默认package.json  build/webpack.dev.conf.js
       webpack-dev-server
     npm run build
   2. 商业项目工程化架构

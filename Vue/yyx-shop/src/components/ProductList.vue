@@ -15,6 +15,7 @@
 // 数据管理后 组件 偏UI, data() 私有状态收回
 import { mapState, mapActions } from 'vuex'
 export default {
+    // 计算属性 
     computed: mapState({
         products: state => state.products.all
     }),
